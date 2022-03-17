@@ -1,0 +1,7 @@
+div#demo {
+    text-align: center;
+    color: brown;
+  }
+  :host {
+      background-color: antiquewhite;
+  }
