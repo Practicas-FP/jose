@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Entrada } from '../shared/interfaces/interfaces';
+import { Entrada } from '../shared/interfaces/entrada';
 
 @Component({
   selector: 'app-entrada',
