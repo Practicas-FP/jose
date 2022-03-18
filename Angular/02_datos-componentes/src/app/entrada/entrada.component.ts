@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Entrada } from '../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-entrada',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entrada.component.css']
 })
 export class EntradaComponent implements OnInit {
-
-
+  @Input()
+  public entrada!: Entrada;
   constructor() { }
 
   ngOnInit(): void {
