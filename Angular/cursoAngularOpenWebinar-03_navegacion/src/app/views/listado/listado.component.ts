@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Entrada } from '../shared/interfaces/entrada';
+
+import { Entrada } from 'src/app/shared/interfaces/entrada';
 
 @Component({
   selector: 'app-listado',
@@ -7,7 +8,9 @@ import { Entrada } from '../shared/interfaces/entrada';
   styleUrls: ['./listado.component.css']
 })
 export class ListadoComponent implements OnInit {
+  // Atibutos
   public listadoEntradas: Entrada[];
+
   constructor() {
     this.listadoEntradas = [
       {
@@ -28,8 +31,8 @@ export class ListadoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public mostrarEntrada(titulo: string): void {
-    alert("Entrada seleccionada " + titulo);
+  public mostrarTitulo(titulo: string): void {
+    alert(`Entrada seleccionada: ${ titulo }.`);
   }
 
 }
