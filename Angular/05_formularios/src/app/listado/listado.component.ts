@@ -1,5 +1,5 @@
 import { EntradaService } from './../shared/services/entrada.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Entrada } from '../shared/interfaces/entrada';
 
 @Component({
@@ -8,10 +8,13 @@ import { Entrada } from '../shared/interfaces/entrada';
   styleUrls: ['./listado.component.css']
 })
 export class ListadoComponent implements OnInit {
+  @Input()
+  public nombreSerie!: string;
+
   public listadoEntradas: any;
 
   constructor(private entradaService: EntradaService) {
-
+    this.recuperarEntradas(this.nombreSerie);
   }
 
   public recuperarEntradas(nombre: string): void {

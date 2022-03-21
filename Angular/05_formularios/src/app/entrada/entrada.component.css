@@ -1,0 +1,12 @@
+#entrada {
+  background-color: aqua;
+  border-radius: 10px;
+}
+
+#entrada * {
+  padding: 10px;
+}
+
+img {
+  text-align: center;
+}
