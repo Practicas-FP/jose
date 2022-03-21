@@ -8,7 +8,7 @@ import { Entrada } from '../shared/interfaces/entrada';
 })
 export class EntradaComponent implements OnInit {
   @Input()
-  public entrada!: Entrada;
+  public entrada!: any;
 
   constructor() { }
 
