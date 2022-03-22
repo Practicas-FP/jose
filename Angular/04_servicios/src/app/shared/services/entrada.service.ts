@@ -20,6 +20,8 @@ export class EntradaService {
     return this.httpClient.get<any>('https://api.jikan.moe/v4/anime?limit=5&sfw&order_by=score&sort=desc');
   }
 
+
+
   public setNombreBusqueda(nombre: string): void
   {
     this.nombre = nombre;

@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-encontrada.component';
 import { AcercaDeNosotrosComponent } from './acerca-de-nosotros/acerca-de-nosotros.component';
 import { FormsModule, NgForm } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule, NgForm } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
