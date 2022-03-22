@@ -1,4 +1,7 @@
+import { BusquedaService } from './../shared/services/busqueda.service';
 import { Component, OnInit } from '@angular/core';
+import { ListadoComponent } from '../listado/listado.component';
+import { EntradaService } from '../shared/services/entrada.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  public texto: string = "";
 
-  constructor() { }
+  constructor(private entradaService: EntradaService) { }
 
   ngOnInit(): void {
+  }
+
+  public mostrarBusqueda(busqueda: string): void {
+    alert("Busqueda seleccionada " + busqueda);
+  }
+
+  public iniciarBusqueda(nombre: string): void {
+    this.mostrarBusqueda(nombre);
+    this.entradaService.setNombreBusqueda(nombre);
   }
 
 }
