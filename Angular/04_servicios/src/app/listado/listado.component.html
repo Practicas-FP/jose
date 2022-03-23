@@ -6,11 +6,12 @@
   <h3>Listado de anime:</h3>
 </div>
 <div class="grid-container">
-  <div class="grid-item"  *ngFor="let entrada of listadoEntradas.data">
+  <div class="grid-item"  *ngFor="let entrada of listadoEntradas.data  | paginate: { itemsPerPage: 10, currentPage: p }">
     <app-entrada id="entrada"
+    routerLink="/detalles" [queryParams] = "{animeid: entrada.mal_id}"
     [entrada]="entrada"
-    (click)="mostrarEntrada(entrada.mal_id)"></app-entrada>
+    (click)="mostrarEntrada(entrada.synopsis)"></app-entrada>
   </div>
-
+  <pagination-controls class="paginacion" (pageChange)="p = $event"></pagination-controls>
 </div>
 

@@ -13,14 +13,16 @@ export class EntradaService {
   }
 
   public recuperarEntradas(nombre: string): Observable<any> {
-    return this.httpClient.get<any>('https://api.jikan.moe/v4/anime?q=' + nombre + '&limit=10&sfw&order_by=score&sort=desc');
+    return this.httpClient.get<any>('https://api.jikan.moe/v4/anime?q=' + nombre + '&limit=40&sfw&order_by=score&sort=desc');
   }
 
   public recuperarEntradasPopularidad(): Observable<any> {
-    return this.httpClient.get<any>('https://api.jikan.moe/v4/anime?limit=5&sfw&order_by=score&sort=desc');
+    return this.httpClient.get<any>('https://api.jikan.moe/v4/anime?limit=20&sfw&order_by=score&sort=desc');
   }
 
-
+  public recuperarEntradaPorId(id: string): Observable<any> {
+    return this.httpClient.get<any>('https://api.jikan.moe/v4/anime/' + id);
+  }
 
   public setNombreBusqueda(nombre: string): void
   {

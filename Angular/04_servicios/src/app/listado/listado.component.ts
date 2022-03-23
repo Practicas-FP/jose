@@ -2,6 +2,7 @@ import { BusquedaService } from './../shared/services/busqueda.service';
 import { EntradaService } from './../shared/services/entrada.service';
 import { Component, OnInit } from '@angular/core';
 import { Entrada } from '../shared/interfaces/entrada';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listado',
@@ -11,6 +12,7 @@ import { Entrada } from '../shared/interfaces/entrada';
 export class ListadoComponent implements OnInit {
   public tituloBusqueda?: string;
   public listadoEntradas: any;
+  public p: number = 1;
 
   constructor(private entradaService: EntradaService) {
     this.tituloBusqueda = "";
@@ -46,6 +48,7 @@ export class ListadoComponent implements OnInit {
 
   ngOnInit(): void {
     this.recuperarEntradas(this.tituloBusqueda + '');
+
   }
 
   ngOnChange(): void {

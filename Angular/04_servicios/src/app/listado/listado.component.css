@@ -15,9 +15,13 @@
 }
 
 .grid-container {
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto;
 }
 
 #menuListado {
   background-color: #2196F3;
+}
+
+.paginacion /deep/ .ngx-pagination .current {
+  background: red;
 }
