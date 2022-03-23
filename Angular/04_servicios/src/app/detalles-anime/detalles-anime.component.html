@@ -1,3 +1,26 @@
-<p>detalles-anime works!</p>
-<p>{{animeid}}</p>
-<p>{{entrada.data.title_english}}</p>
+<div class="grid-container">
+  <div class="item1">
+    <img (click)="test()" src="{{entrada.images.jpg.large_image_url}}">
+    <h3>{{entrada.title}}</h3>
+    <h4>Títulos alternativos <hr></h4>
+    <p>Título original: {{entrada.title}} ({{entrada.title_japanese}})</p>
+    <p>Título en inglés: {{entrada.title_english}}</p>
+
+  </div>
+  <div class="item2">
+    <h2>Sinopsis<hr></h2>
+    <p>{{entrada.synopsis}}</p>
+  </div>
+  <div class="item3">
+    <h4>Información<hr></h4>
+    <p>Tipo: {{entrada.type}}</p>
+    <p>Fuente: {{entrada.source}}</p>
+    <p>Número de episodios: {{entrada.episodes}}</p>
+    <p>Fecha de emisión: {{entrada.aired.string}}</p>
+    <p>Puntuación: {{entrada.score}}</p>
+    <p>Temporada: {{entrada.season}} {{entrada.year}}</p>
+    <p>Estudio de animación: {{entrada.studios[0].name}}</p>
+  </div>
+
+</div>
+

@@ -1,14 +1,13 @@
 .grid-container {
   display: inline-grid;
   grid-template-columns: auto auto auto;
-  background-color: #2196F3;
+  background-color: #b9cddd;
   padding: 10px;
   max-width: fit-content;
 }
 
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
   font-size: 10px;
   text-align: center;
@@ -19,9 +18,27 @@
 }
 
 #menuListado {
-  background-color: #2196F3;
+  background-color: #b9cddd;
+  margin-top: 0;
 }
 
-.paginacion /deep/ .ngx-pagination .current {
-  background: red;
+.busqueda {
+  text-align: center;
+  height: auto;
 }
+
+.paginacion {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#entradaDatos {
+  margin-top: 10px;
+  width: 10%;
+}
+
+input {
+  width: 60%;
+}
+
+

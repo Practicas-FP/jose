@@ -1,8 +1,10 @@
 #menu {
   padding: 0;
-  background-color: rgb(255, 221, 158);
+  background-color: #BDC2BF;
   width: 100%;
   height: 40px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #menu li {

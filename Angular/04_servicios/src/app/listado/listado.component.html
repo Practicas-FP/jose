@@ -1,17 +1,19 @@
 <div id="menuListado">
-  <nav>
-    <input type="text" [(ngModel)]="tituloBusqueda" name="nombre">
-    <button (click)="recuperarEntradas(tituloBusqueda + '')">Buscar</button>
-  </nav>
-  <h3>Listado de anime:</h3>
+    <div class="busqueda">
+      <input id="entradaDatos" placeholder="Buscar..." (keydown.enter)="recuperarEntradas(tituloBusqueda + '')" type="text" [(ngModel)]="tituloBusqueda" name="nombre">
+      <button (click)="recuperarEntradas(tituloBusqueda + '')">Buscar</button>
+    </div>
+    <div class="grid-container">
+      <div class="grid-item"  *ngFor="let entrada of listadoEntradas.data  | paginate: { itemsPerPage: 10, currentPage: p }">
+        <app-entrada id="entrada"
+        routerLink="/detalles" [queryParams] = "{animeid: entrada.mal_id}"
+        [entrada]="entrada"></app-entrada>
+      </div>
+    </div>
+    <div  class="paginacion" >
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <span></span>
 </div>
-<div class="grid-container">
-  <div class="grid-item"  *ngFor="let entrada of listadoEntradas.data  | paginate: { itemsPerPage: 10, currentPage: p }">
-    <app-entrada id="entrada"
-    routerLink="/detalles" [queryParams] = "{animeid: entrada.mal_id}"
-    [entrada]="entrada"
-    (click)="mostrarEntrada(entrada.synopsis)"></app-entrada>
-  </div>
-  <pagination-controls class="paginacion" (pageChange)="p = $event"></pagination-controls>
-</div>
+
 

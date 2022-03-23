@@ -22,7 +22,7 @@ export class DetallesAnimeComponent implements OnInit {
   public recuperarEntrada(): void {
     this.entradaService.recuperarEntradaPorId(this.animeid).subscribe(
       (data) => {
-        this.entrada = data;
+        this.entrada = data.data;
       },
       (error) => {
 
@@ -45,6 +45,10 @@ export class DetallesAnimeComponent implements OnInit {
 
       }
     );
+  }
+
+  public test():void {
+    console.log();
   }
 
 }

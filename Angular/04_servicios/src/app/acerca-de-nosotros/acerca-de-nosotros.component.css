@@ -1,8 +1,10 @@
 #contenedor {
-  background-color: azure;
-  height: 750px;
+  text-align: center;
+  background-color: #b9cddd;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-#contenedor * {
-  padding: 5px;
+img {
+  width: 50%;
 }
