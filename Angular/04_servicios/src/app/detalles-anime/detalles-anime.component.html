@@ -1,26 +1,40 @@
 <div class="grid-container">
   <div class="item1">
-    <img (click)="test()" src="{{entrada.images.jpg.large_image_url}}">
-    <h3>{{entrada.title}}</h3>
+    <img (click)="test()" src="{{entrada.data.images.jpg.large_image_url}}">
+    <h3>{{entrada.data.title}}</h3>
     <h4>Títulos alternativos <hr></h4>
-    <p>Título original: {{entrada.title}} ({{entrada.title_japanese}})</p>
-    <p>Título en inglés: {{entrada.title_english}}</p>
-
+    <p>Título original: {{entrada.data.title}} ({{entrada.data.title_japanese}})</p>
+    <p>Título en inglés: {{entrada.data.title_english}}</p>
+    <h4>Información<hr></h4>
+    <p>Tipo: {{entrada.data.type}}</p>
+    <p>Fuente: {{entrada.data.source}}</p>
+    <p>Número de episodios: {{entrada.data.episodes}}</p>
+    <p>Fecha de emisión: {{entrada.data.aired.string}}</p>
+    <p>Puntuación: {{entrada.data.score}}</p>
+    <p>Temporada: {{entrada.data.season}} {{entrada.data.year}}</p>
+    <p>Estudio de animación: {{entrada.data.studios[0].name}}</p>
+    <p>Género: <span *ngFor="let genero of entrada.data.genres">{{genero.name}}<span *ngIf="genero != entrada.data.genres[entrada.data.genres.length - 1]">, </span>
+    </span>
+    </p>
   </div>
   <div class="item2">
     <h2>Sinopsis<hr></h2>
-    <p>{{entrada.synopsis}}</p>
+    <p>{{entrada.data.synopsis}}</p>
   </div>
   <div class="item3">
-    <h4>Información<hr></h4>
-    <p>Tipo: {{entrada.type}}</p>
-    <p>Fuente: {{entrada.source}}</p>
-    <p>Número de episodios: {{entrada.episodes}}</p>
-    <p>Fecha de emisión: {{entrada.aired.string}}</p>
-    <p>Puntuación: {{entrada.score}}</p>
-    <p>Temporada: {{entrada.season}} {{entrada.year}}</p>
-    <p>Estudio de animación: {{entrada.studios[0].name}}</p>
+    <h2>Lista de episodios<hr></h2>
+    <table>
+      <tr>
+        <th>Número</th>
+        <th>Título</th>
+        <th>Fecha de emisión</th>
+      </tr>
+      <tr *ngFor="let episodio of listaEpisodios.data">
+        <td>{{episodio.mal_id}}</td>
+        <td>{{episodio.title}}</td>
+        <td>{{episodio.aired.slice(0, 10)}}</td>
+      </tr>
+    </table>
   </div>
-
 </div>
 

@@ -12,6 +12,9 @@ import { RouterLink } from '@angular/router';
 export class ListadoComponent implements OnInit {
   public tituloBusqueda?: string;
   public listadoEntradas: any;
+  public estadoEmision: string = "";
+  public ordenarPor: string = "";
+  public tipo: string = "";
   public p: number = 1;
 
   constructor(private entradaService: EntradaService) {
@@ -19,7 +22,10 @@ export class ListadoComponent implements OnInit {
   }
 
   public recuperarEntradas(nombre: string): void {
-    this.entradaService.recuperarEntradas(nombre).subscribe(
+    this.entradaService.setNombreBusqueda(nombre)
+    this.entradaService.setEstadoEmision(this.estadoEmision)
+    debugger
+    this.entradaService.recuperarEntradas().subscribe(
       (data) => {
         this.listadoEntradas = data;
       },

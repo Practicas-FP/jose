@@ -1,3 +1,4 @@
+import { DetallesAnimeComponent } from './detalles-anime/detalles-anime.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +12,7 @@ import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-en
 import { AcercaDeNosotrosComponent } from './acerca-de-nosotros/acerca-de-nosotros.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,16 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ListadoComponent,
     EntradaComponent,
     PaginaNoEncontradaComponent,
-    AcercaDeNosotrosComponent
+    AcercaDeNosotrosComponent,
+    DetallesAnimeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

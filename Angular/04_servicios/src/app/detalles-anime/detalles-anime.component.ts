@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DetallesAnimeComponent implements OnInit {
   public entrada: any;
   public animeid: string = "";
+  public listaEpisodios: any;
   constructor(private entradaService: EntradaService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -17,12 +18,27 @@ export class DetallesAnimeComponent implements OnInit {
       this.animeid = params['animeid'];
     });
     this.recuperarEntrada();
+    this.recuperarCapitulos();
+  }
+
+  public recuperarCapitulos(): void {
+    this.entradaService.recuperarEpisodiosPorId(this.animeid).subscribe(
+      (data) => {
+        this.listaEpisodios = data;
+      },
+      (error) => {
+
+      },
+      () => {
+
+      }
+    )
   }
 
   public recuperarEntrada(): void {
     this.entradaService.recuperarEntradaPorId(this.animeid).subscribe(
       (data) => {
-        this.entrada = data.data;
+        this.entrada = data;
       },
       (error) => {
 

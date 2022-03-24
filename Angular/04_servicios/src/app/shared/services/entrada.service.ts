@@ -8,12 +8,13 @@ import { Observable } from 'rxjs';
 export class EntradaService {
 
   public nombre?: string;
+  public estadoEmision: string = "";
   constructor(private httpClient: HttpClient) {
 
   }
 
-  public recuperarEntradas(nombre: string): Observable<any> {
-    return this.httpClient.get<any>('https://api.jikan.moe/v4/anime?q=' + nombre + '&limit=40&sfw&order_by=score&sort=desc');
+  public recuperarEntradas(): Observable<any> {
+    return this.httpClient.get<any>('https://api.jikan.moe/v4/anime?q=' + this.nombre + '&status=' + this.estadoEmision + '&limit=40&sfw&order_by=score&sort=desc');
   }
 
   public recuperarEntradasPopularidad(): Observable<any> {
@@ -24,8 +25,17 @@ export class EntradaService {
     return this.httpClient.get<any>('https://api.jikan.moe/v4/anime/' + id);
   }
 
+  public recuperarEpisodiosPorId(id: string): Observable<any> {
+    return this.httpClient.get<any>('https://api.jikan.moe/v4/anime/' + id +'/episodes');
+  }
+
   public setNombreBusqueda(nombre: string): void
   {
     this.nombre = nombre;
+  }
+
+  public setEstadoEmision(estadoEmision: string): void
+  {
+    this.estadoEmision = estadoEmision;
   }
 }
