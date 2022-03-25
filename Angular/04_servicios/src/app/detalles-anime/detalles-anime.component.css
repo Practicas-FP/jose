@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: 20% auto auto;
   gap: 10px;
-  background-color: #b9cddd;
-  padding: 10px;
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);  padding: 10px;
 }
 
 .grid-container > div {

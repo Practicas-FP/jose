@@ -1,8 +1,28 @@
 #cabecera {
   text-align: center;
-  background-color: #E3E7D3;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid-container > div {
+  background-color: #BDC2BF;
+  text-align: center;
+}
+
+div {
+  border-style: double;
+}
+
+* {
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 
 

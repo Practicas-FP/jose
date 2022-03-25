@@ -13,7 +13,7 @@ export class ListadoComponent implements OnInit {
   public tituloBusqueda?: string;
   public listadoEntradas: any;
   public estadoEmision: string = "";
-  public ordenarPor: string = "";
+  public ordenarPor: string = "score";
   public tipo: string = "";
   public p: number = 1;
 
@@ -24,7 +24,9 @@ export class ListadoComponent implements OnInit {
   public recuperarEntradas(nombre: string): void {
     this.entradaService.setNombreBusqueda(nombre)
     this.entradaService.setEstadoEmision(this.estadoEmision)
-    debugger
+    this.entradaService.setOrdenarPor(this.ordenarPor)
+    this.entradaService.setTipo(this.tipo)
+
     this.entradaService.recuperarEntradas().subscribe(
       (data) => {
         this.listadoEntradas = data;
@@ -54,7 +56,6 @@ export class ListadoComponent implements OnInit {
 
   ngOnInit(): void {
     this.recuperarEntradas(this.tituloBusqueda + '');
-
   }
 
   ngOnChange(): void {

@@ -1,19 +1,14 @@
 .grid-container {
   display: inline-grid;
   grid-template-columns: auto auto auto;
-  background-color: #b9cddd;
-  padding: 10px;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);  padding: 10px;
+  margin: 5px;
 }
 
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
+.grid-entradas {
   padding: 20px;
-  font-size: 10px;
   text-align: center;
-}
-
-.grid-container {
-  grid-template-columns: auto auto auto auto auto;
 }
 
 #menuListado {
@@ -38,19 +33,33 @@
   margin-right: auto;
 }
 
-.paginacion {
+.grid-paginacion {
   text-align: center;
-  margin-bottom: 30px;
+  grid-column-start: 1;
+  grid-column-end: 6;
 }
 
-#entradaDatos {
-  margin-top: 10px;
-  width: 10%;
-}
+
 
 
 
 div {
   border-style: double;
+}
+
+.grid-busqueda {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 5px;
+}
+
+.grid-busqueda > div {
+  text-align: center;
+  font-size: auto;
+}
+
+.cuadro-busqueda {
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
 

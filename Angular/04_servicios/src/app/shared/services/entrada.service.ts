@@ -9,12 +9,14 @@ export class EntradaService {
 
   public nombre?: string;
   public estadoEmision: string = "";
+  public tipo: string = "";
+  public ordenarPor: string = "";
   constructor(private httpClient: HttpClient) {
 
   }
 
   public recuperarEntradas(): Observable<any> {
-    return this.httpClient.get<any>('https://api.jikan.moe/v4/anime?q=' + this.nombre + '&status=' + this.estadoEmision + '&limit=40&sfw&order_by=score&sort=desc');
+    return this.httpClient.get<any>('https://api.jikan.moe/v4/anime?q=' + this.nombre + '&status=' + this.estadoEmision + '&type=' + this.tipo + '&limit=40&sfw&' + 'order_by=' + this.ordenarPor + '&sort=desc');
   }
 
   public recuperarEntradasPopularidad(): Observable<any> {
@@ -37,5 +39,13 @@ export class EntradaService {
   public setEstadoEmision(estadoEmision: string): void
   {
     this.estadoEmision = estadoEmision;
+  }
+  public setTipo(tipo: string): void
+  {
+    this.tipo = tipo;
+  }
+  public setOrdenarPor(ordenarPor: string): void
+  {
+    this.ordenarPor = ordenarPor;
   }
 }

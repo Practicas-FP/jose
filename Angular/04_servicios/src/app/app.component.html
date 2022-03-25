@@ -1,5 +1,11 @@
-<div id="cabecera" routerLink="/listado">
-  <h1>Buscador de anime</h1>
+<div class="grid-container">
+  <div class="item1">
+    <div id="cabecera" routerLink="/listado">
+      <h1>Buscador de anime</h1>
+    </div>
+    <app-menu></app-menu>
+  </div>
+  <div class="item2">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-<app-menu></app-menu>
-<router-outlet></router-outlet>
