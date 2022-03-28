@@ -45,7 +45,11 @@ import { EntradaService } from './shared/services/entrada.service';
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
-
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
 
   ],
   providers: [AuthService, EntradaService],

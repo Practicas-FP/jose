@@ -5,14 +5,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListadoComponent } from './listado/listado.component';
 import { AcercaDeNosotrosComponent } from './acerca-de-nosotros/acerca-de-nosotros.component';
 import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-encontrada.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'listado', component: ListadoComponent },
   { path: 'nosotros', component: AcercaDeNosotrosComponent},
   { path: 'detalles', component: DetallesAnimeComponent},
-
+  { path: 'login', component: LoginComponent},
   { path: '', redirectTo: '/listado', pathMatch: 'full'},
-  { path: '**', component: PaginaNoEncontradaComponent}
+  { path: '**', component: PaginaNoEncontradaComponent},
+  { path: 'dashboard', component: DashboardComponent },
 ];
 
 @NgModule({
