@@ -14,7 +14,6 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -23,6 +22,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { AuthService } from './shared/services/auth.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
