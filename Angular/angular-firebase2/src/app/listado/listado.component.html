@@ -1,0 +1,51 @@
+<div class="grid-busqueda">
+  <div class="cuadro-busqueda">
+        <input id="entradaDatos" placeholder="Buscar..." (keydown.enter)="recuperarEntradas(tituloBusqueda + '')" type="text" [(ngModel)]="tituloBusqueda" name="nombre">
+      <button (click)="recuperarEntradas(tituloBusqueda + '')">Buscar</button>
+  </div>
+  <div class="item2">
+        <h4>Estado de emisión</h4>
+        <input type="radio" checked="true" id="cualquierEstado" name="cualquierEstado" value="" [(ngModel)]="estadoEmision">
+        <label for="cualquierEstado">Cualquiera</label>
+        <input type="radio" id="css" name="airing" value="airing" [(ngModel)]="estadoEmision">
+        <label for="airing">En emision</label>
+        <input type="radio" id="javascript" name="complete" value="complete" [(ngModel)]="estadoEmision">
+        <label for="complete">Emitido</label>
+        <input type="radio" id="javascript" name="upcoming" value="upcoming" [(ngModel)]="estadoEmision">
+        <label for="upcoming">Por emitir</label>
+  </div>
+  <div class="item3">
+        <h4>Ordenar por</h4>
+        <input type="radio" checked="true" id="score" name="score" value="score" [(ngModel)]="ordenarPor">
+        <label for="score">Popularidad</label>
+        <input type="radio" id="title" name="title" value="title" [(ngModel)]="ordenarPor">
+        <label for="title">Orden alfabético</label>
+  </div>
+  <div class="item4">
+        <h4>Filtrar por tipo</h4>
+        <input type="radio" checked="true" id="cualquiera" name="cualquiera" value="" [(ngModel)]="tipo">
+        <label for="cualquiera">Cualquiera</label>
+        <input type="radio" id="tv" name="tv" value="tv" [(ngModel)]="tipo">
+        <label for="tv">TV</label>
+        <input type="radio" id="movie" name="movie" value="movie" [(ngModel)]="tipo">
+        <label for="movie">Película</label>
+        <input type="radio" id="ova" name="ova" value="ova" [(ngModel)]="tipo">
+        <label for="ova">Episodio independiente</label>
+        <input type="radio" id="special" name="special" value="special" [(ngModel)]="tipo">
+        <label for="special">Episodio especial</label>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div class="grid-entradas"  *ngFor="let entrada of listadoEntradas.data  | paginate: { itemsPerPage: 10, currentPage: p }">
+    <app-entrada id="entrada"
+    routerLink="/detalles" [queryParams] = "{animeid: entrada.mal_id}"
+    [entrada]="entrada"></app-entrada>
+  </div>
+
+  <span></span>
+</div>
+
+
+
+
