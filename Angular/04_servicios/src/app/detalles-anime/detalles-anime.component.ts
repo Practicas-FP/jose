@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-detalles-anime',
   templateUrl: './detalles-anime.component.html',
-  styleUrls: ['./detalles-anime.component.css']
+  styleUrls: ['./detalles-anime.component.scss']
 })
 export class DetallesAnimeComponent implements OnInit {
   public entrada: any;

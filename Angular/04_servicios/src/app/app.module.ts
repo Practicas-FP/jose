@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
     EntradaComponent,
     PaginaNoEncontradaComponent,
     AcercaDeNosotrosComponent,
-    DetallesAnimeComponent
+    DetallesAnimeComponent,
   ],
   imports: [
     BrowserModule,

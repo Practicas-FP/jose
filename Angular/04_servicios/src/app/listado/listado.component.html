@@ -36,7 +36,9 @@
       </div>
     </div>
 
-    <div class="grid-container">
+
+
+<!--     <div class="grid-container">
       <div class="grid-entradas"  *ngFor="let entrada of listadoEntradas.data  | paginate: { itemsPerPage: 10, currentPage: p }">
         <app-entrada id="entrada"
         routerLink="/detalles" [queryParams] = "{animeid: entrada.mal_id}"
@@ -46,6 +48,16 @@
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
       <span></span>
+    </div> -->
+
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div *ngFor="let entrada of listadoEntradas.data" class="col">
+            <app-entrada [entrada]="entrada"></app-entrada>
+          </div>
     </div>
 
 

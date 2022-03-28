@@ -39,14 +39,6 @@
   grid-column-end: 6;
 }
 
-
-
-
-
-div {
-  border-style: double;
-}
-
 .grid-busqueda {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -56,6 +48,7 @@ div {
 .grid-busqueda > div {
   text-align: center;
   font-size: auto;
+  border-style: double;
 }
 
 .cuadro-busqueda {
