@@ -1,3 +1,4 @@
+import { AuthService } from './../shared/services/auth.service';
 import { BusquedaService } from './../shared/services/busqueda.service';
 import { Component, OnInit } from '@angular/core';
 import { ListadoComponent } from '../listado/listado.component';
@@ -11,7 +12,7 @@ import { EntradaService } from '../shared/services/entrada.service';
 export class MenuComponent implements OnInit {
   public texto: string = "";
 
-  constructor(private entradaService: EntradaService) { }
+  constructor(private entradaService: EntradaService, public login: AuthService) { }
 
   ngOnInit(): void {
   }

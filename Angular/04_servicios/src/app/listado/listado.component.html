@@ -1,40 +1,4 @@
-    <div class="grid-busqueda">
-      <div class="cuadro-busqueda">
-            <input id="entradaDatos" placeholder="Buscar..." (keydown.enter)="recuperarEntradas(tituloBusqueda + '')" type="text" [(ngModel)]="tituloBusqueda" name="nombre">
-          <button (click)="recuperarEntradas(tituloBusqueda + '')">Buscar</button>
-      </div>
-      <div class="item2">
-            <h4>Estado de emisión</h4>
-            <input type="radio" checked="true" id="cualquierEstado" name="cualquierEstado" value="" [(ngModel)]="estadoEmision">
-            <label for="cualquierEstado">Cualquiera</label>
-            <input type="radio" id="css" name="airing" value="airing" [(ngModel)]="estadoEmision">
-            <label for="airing">En emision</label>
-            <input type="radio" id="javascript" name="complete" value="complete" [(ngModel)]="estadoEmision">
-            <label for="complete">Emitido</label>
-            <input type="radio" id="javascript" name="upcoming" value="upcoming" [(ngModel)]="estadoEmision">
-            <label for="upcoming">Por emitir</label>
-      </div>
-      <div class="item3">
-            <h4>Ordenar por</h4>
-            <input type="radio" checked="true" id="score" name="score" value="score" [(ngModel)]="ordenarPor">
-            <label for="score">Popularidad</label>
-            <input type="radio" id="title" name="title" value="title" [(ngModel)]="ordenarPor">
-            <label for="title">Orden alfabético</label>
-      </div>
-      <div class="item4">
-            <h4>Filtrar por tipo</h4>
-            <input type="radio" checked="true" id="cualquiera" name="cualquiera" value="" [(ngModel)]="tipo">
-            <label for="cualquiera">Cualquiera</label>
-            <input type="radio" id="tv" name="tv" value="tv" [(ngModel)]="tipo">
-            <label for="tv">TV</label>
-            <input type="radio" id="movie" name="movie" value="movie" [(ngModel)]="tipo">
-            <label for="movie">Película</label>
-            <input type="radio" id="ova" name="ova" value="ova" [(ngModel)]="tipo">
-            <label for="ova">Episodio independiente</label>
-            <input type="radio" id="special" name="special" value="special" [(ngModel)]="tipo">
-            <label for="special">Episodio especial</label>
-      </div>
-    </div>
+
 
 
 
@@ -49,6 +13,68 @@
       </div>
       <span></span>
     </div> -->
+
+    <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+      <div class="container-fluid">
+        <span class="navbar-brand">Búsqueda</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample01">
+          <ul class="navbar-nav me-auto mb-2">
+            <li class="nav-item">
+              <span class="nav-link active" aria-current="page">
+                <div class="item2">
+                  <h5>Estado de emisión</h5>
+                  <input type="radio" checked="true" id="cualquierEstado" name="cualquierEstado" value="" [(ngModel)]="estadoEmision">
+                  <label for="cualquierEstado">Cualquiera </label>
+                  <input type="radio" id="css" name="airing" value="airing" [(ngModel)]="estadoEmision">
+                  <label for="airing">En emision </label>
+                  <input type="radio" id="javascript" name="complete" value="complete" [(ngModel)]="estadoEmision">
+                  <label for="complete">Emitido </label>
+                  <input type="radio" id="javascript" name="upcoming" value="upcoming" [(ngModel)]="estadoEmision">
+                  <label for="upcoming">Por emitir </label>
+            </div>
+              </span>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link active">
+                <div class="item3">
+                  <h5>Ordenar por</h5>
+                  <input type="radio" checked="true" id="score" name="score" value="score" [(ngModel)]="ordenarPor">
+                  <label for="score">Popularidad </label>
+                  <input type="radio" id="title" name="title" value="title" [(ngModel)]="ordenarPor">
+                  <label for="title">Orden alfabético </label>
+            </div>
+              </span>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link active" >
+                <div class="item4">
+                  <h5>Filtrar por tipo</h5>
+                  <input type="radio" checked="true" id="cualquiera" name="cualquiera" value="" [(ngModel)]="tipo">
+                  <label for="cualquiera">Cualquiera </label>
+                  <input type="radio" id="tv" name="tv" value="tv" [(ngModel)]="tipo">
+                  <label for="tv">TV </label>
+                  <input type="radio" id="movie" name="movie" value="movie" [(ngModel)]="tipo">
+                  <label for="movie">Película </label>
+                  <input type="radio" id="ova" name="ova" value="ova" [(ngModel)]="tipo">
+                  <label for="ova">Episodio independiente </label>
+                  <input type="radio" id="special" name="special" value="special" [(ngModel)]="tipo">
+                  <label for="special">Episodio especial </label>
+            </div>
+              </span>
+            </li>
+          </ul>
+          <form>
+            <input class="form-control"  (keydown.enter)="recuperarEntradas(tituloBusqueda + '')" type="text" [(ngModel)]="tituloBusqueda" name="nombre" type="text" placeholder="Buscar..." aria-label="Search">
+          </form>
+        </div>
+      </div>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
 
     <div class="album py-5 bg-light">
