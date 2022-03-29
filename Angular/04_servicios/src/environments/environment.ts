@@ -7,6 +7,7 @@ export const environment = {
   firebase: {
     apiKey: "AIzaSyCzsSVMCN-Z2_OUYyzvJjiWz4jc2BpQPck",
     authDomain: "poetic-ceremony-345507.firebaseapp.com",
+    databaseURL: "https://poetic-ceremony-345507-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "poetic-ceremony-345507",
     storageBucket: "poetic-ceremony-345507.appspot.com",
     messagingSenderId: "837471827346",

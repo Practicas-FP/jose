@@ -10,7 +10,7 @@
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
           <button type="button" routerLink="/detalles" [queryParams] = "{animeid: entrada.mal_id}" class="btn btn-sm btn-outline-secondary">Ver</button>
-          <button type="button" class="btn btn-sm btn-outline-secondary">Favoritos</button>
+          <button type="button"  *ngIf="authService.userData as user" (click)="saveTutorial(entrada.mal_id)" class="btn btn-sm btn-outline-secondary">Favoritos</button>
         </div>
       </div>
     </div>

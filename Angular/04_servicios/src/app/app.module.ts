@@ -23,6 +23,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { AuthService } from './shared/services/auth.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ListadoFavoritosComponent } from './listado-favoritos/listado-favoritos.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DetallesAnimeComponent,
     LoginComponent,
     DashboardComponent,
+    ListadoFavoritosComponent,
   ],
   imports: [
     BrowserModule,
