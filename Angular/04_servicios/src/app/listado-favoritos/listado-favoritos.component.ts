@@ -27,16 +27,11 @@ export class ListadoFavoritosComponent implements OnInit {
       )
     ).subscribe(data => {
       this.favoritos = data;
-      console.log(JSON.stringify(this.favoritos));
-      console.log(data)
-
       data.forEach(element => {
-        console.log(element.animeid)
         this.recuperarEntradas(element.animeid);
       });
-      console.log('Listado: ')
-      console.log(this.listado)
     });
+    this.isFav('5114');
   }
 
   public recuperarEntradas(animeid: string): void {
@@ -54,19 +49,22 @@ export class ListadoFavoritosComponent implements OnInit {
     );
   }
 
-  public recuperarEntrada(): any {
-    let test = JSON.parse(this.favoritos)
-    console.log(JSON.stringify(test))
-    console.log('hola')
-    console.log(JSON.stringify(this.favoritos));
-    test.forEach((element: any) => {
-      console.log(element.animeid)
-      console.log('uno añadido')
+  isFav(animeid: string): boolean {
+    let encontrado = false;
+
+    this.favoritos.forEach((element: any) => {
+      console.log('Clave' + element.key)
+      console.log('Clave introducida: '+  animeid)
+      if(element.key == animeid)
+        {
+          encontrado = true;
+        }
+      else
+      {
+        encontrado = false;
+      }
     });
-    for(var i = 0; i < test.length; i++)
-    {
-      console.log(i);
-    }
+    return false;
   }
 
 }

@@ -1,3 +1,6 @@
+import { BusquedaService } from './shared/services/busqueda.service';
+import { EntradaService } from './shared/services/entrada.service';
+import { FirestoreManagerService } from './shared/services/firestore-manager.service';
 import { DetallesAnimeComponent } from './detalles-anime/detalles-anime.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,7 +53,7 @@ import { ListadoFavoritosComponent } from './listado-favoritos/listado-favoritos
     AngularFireStorageModule,
     AngularFireDatabaseModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, FirestoreManagerService, EntradaService, BusquedaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

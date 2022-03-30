@@ -28,4 +28,14 @@ export class EntradaComponent implements OnInit {
     });
   }
 
+  public borrarFavorito(animeid: string):void {
+    this.db.delete(animeid + '').then(() => {
+      console.log('Deleted item successfully!');
+    });
+  }
+
+  reloadCurrentPage() {
+    window.location.reload();
+   }
+
 }

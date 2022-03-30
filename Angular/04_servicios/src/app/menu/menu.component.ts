@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit {
   constructor(private entradaService: EntradaService, public login: AuthService) { }
 
   ngOnInit(): void {
+
   }
 
   public mostrarBusqueda(busqueda: string): void {
