@@ -7,6 +7,7 @@ import { AcercaDeNosotrosComponent } from './acerca-de-nosotros/acerca-de-nosotr
 import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-encontrada.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ListadoFavoritosComponent } from './listado-favoritos/listado-favoritos.component';
 
 const routes: Routes = [
   { path: 'listado', component: ListadoComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: '', redirectTo: '/listado', pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'favoritos', component: ListadoFavoritosComponent },
   { path: '**', component: PaginaNoEncontradaComponent}
 ];
 
