@@ -10,9 +10,15 @@ export class EntradaComponent implements OnInit {
   @Input()
   public entrada!: Entrada;
 
+  @Input()
+  public listaFavoritos?: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.listaFavoritos.forEach(element => {
+      
+    });
   }
 
 }

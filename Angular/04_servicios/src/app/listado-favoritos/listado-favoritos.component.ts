@@ -31,7 +31,6 @@ export class ListadoFavoritosComponent implements OnInit {
         this.recuperarEntradas(element.animeid);
       });
     });
-    this.isFav('5114');
   }
 
   public recuperarEntradas(animeid: string): void {
@@ -59,12 +58,9 @@ export class ListadoFavoritosComponent implements OnInit {
         {
           encontrado = true;
         }
-      else
-      {
-        encontrado = false;
-      }
     });
-    return false;
+    console.log(encontrado);
+    return encontrado;
   }
 
 }
