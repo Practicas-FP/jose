@@ -47,20 +47,4 @@ export class ListadoFavoritosComponent implements OnInit {
       }
     );
   }
-
-  isFav(animeid: string): boolean {
-    let encontrado = false;
-
-    this.favoritos.forEach((element: any) => {
-      console.log('Clave' + element.key)
-      console.log('Clave introducida: '+  animeid)
-      if(element.key == animeid)
-        {
-          encontrado = true;
-        }
-    });
-    console.log(encontrado);
-    return encontrado;
-  }
-
 }

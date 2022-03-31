@@ -3,6 +3,9 @@ import { EntradaService } from './../shared/services/entrada.service';
 import { Component, OnInit } from '@angular/core';
 import { Entrada } from '../shared/interfaces/entrada';
 import { RouterLink } from '@angular/router';
+import { FirestoreManagerService } from '../shared/services/firestore-manager.service';
+import { map } from 'rxjs';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-listado',
@@ -12,12 +15,14 @@ import { RouterLink } from '@angular/router';
 export class ListadoComponent implements OnInit {
   public tituloBusqueda?: string;
   public listadoEntradas: any;
+  public listadoFavoritos: any;
   public estadoEmision: string = "";
   public ordenarPor: string = "score";
   public tipo: string = "";
   public p: number = 1;
 
-  constructor(private entradaService: EntradaService) {
+  constructor(private entradaService: EntradaService, private db: FirestoreManagerService,
+    private authService: AuthService) {
     this.tituloBusqueda = "";
   }
 
@@ -56,15 +61,28 @@ export class ListadoComponent implements OnInit {
 
   ngOnInit(): void {
     this.recuperarEntradas(this.tituloBusqueda + '');
+    if(this.authService.isLoggedIn)
+      this.recuperarFavoritos();
   }
 
   ngOnChange(): void {
 
   }
 
+  recuperarFavoritos(): void {
+    this.db.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.listadoFavoritos = data;
+    });
+  }
+
 
   public mostrarEntrada(titulo: string): void {
     alert("Entrada seleccionada " + titulo);
   }
-
 }

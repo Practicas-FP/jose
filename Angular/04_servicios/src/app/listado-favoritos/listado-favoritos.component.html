@@ -8,6 +8,6 @@
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <div *ngFor="let favorito of listado" class="col">
-        <app-entrada [entrada]="favorito"></app-entrada>
+        <app-entrada [entrada]="favorito" [listaFavoritos]="favoritos"></app-entrada>
       </div>
 </div>
