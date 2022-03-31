@@ -2,8 +2,10 @@
   <div class="item1">
     <img src="{{entrada.data.images.jpg.large_image_url}}">
     <h3>{{entrada.data.title}}</h3>
-    <button *ngIf="esFavorito == false" (click)="esFavorito = true">Guardar en favoritos</button>
-    <button  *ngIf="esFavorito == true"  (click)="esFavorito = false">Borrar de favoritos</button>
+    <p *ngIf="login.isLoggedIn">
+      <button *ngIf="esFavorito == false" (click)="guardarAnime(animeid)" class="btn btn-primary my-2">Guardar en favoritos</button>
+      <button *ngIf="esFavorito == true" (click)="borrarFavorito(animeid)" class="btn btn-secondary my-2">Borrar de favoritos</button>
+    </p>
     <h4>Títulos alternativos <hr></h4>
     <p>Título original: {{entrada.data.title}} ({{entrada.data.title_japanese}})</p>
     <p>Título en inglés: {{entrada.data.title_english}}</p>

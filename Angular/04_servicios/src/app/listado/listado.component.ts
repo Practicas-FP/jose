@@ -61,8 +61,6 @@ export class ListadoComponent implements OnInit {
 
   ngOnInit(): void {
     this.recuperarEntradas(this.tituloBusqueda + '');
-    if(this.authService.isLoggedIn)
-      this.recuperarFavoritos();
   }
 
   ngOnChange(): void {

@@ -16,17 +16,12 @@ export class EntradaComponent implements OnInit {
   public anime!: Anime;
   public esFavorito?: boolean = false;
 
-  @Input()
-  public listaFavoritos?: any;
-
   constructor(public db: FirestoreManagerService, public authService: AuthService) {
 
    }
 
   ngOnInit(): void {
-    if(this.listaFavoritos)
-      this.esFavorito = this.isFav(this.entrada.mal_id);
-      console.log(this.listaFavoritos)
+
   }
 
   saveTutorial(animeid: string): void {
@@ -45,20 +40,7 @@ export class EntradaComponent implements OnInit {
     window.location.reload();
    }
 
-   isFav(animeid: string): boolean {
-    let encontrado = false;
 
-    this.listaFavoritos.forEach((element: any) => {
-      console.log('Clave' + element.key)
-      console.log('Clave introducida: '+  animeid)
-      if(element.key == animeid)
-        {
-          encontrado = true;
-        }
-    });
-    console.log(encontrado);
-    return encontrado;
-  }
 
 
 }
