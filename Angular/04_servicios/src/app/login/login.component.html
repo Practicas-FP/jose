@@ -1,34 +1,8 @@
-<div class="displayTable">
-  <div class="displayTableCell">
-    <div class="authBlock">
-      <h3>Iniciar sesión</h3>
-      <div class="formGroup">
-        <input type="text" class="formControl" placeholder="Nombre usuario" #userName required>
-      </div>
-      <div class="formGroup">
-        <input type="password" class="formControl" placeholder="contraseña" #userPassword required>
-      </div>
-      <!-- Calling SignIn Api from AuthService -->
-      <div class="formGroup">
-        <input type="button" class="btn btnPrimary" value="Iniciar sesion" (click)="authService.SignIn(userName.value, userPassword.value)">
-      </div>
-      <div class="formGroup">
-        <span class="or"><span class="orInner">O</span></span>
-      </div>
-      <!-- Calling GoogleAuth Api from AuthService -->
-      <div class="formGroup">
-        <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-          <i class="fab fa-google-plus-g"></i>
-          Iniciar sesión con google
-        </button>
-      </div>
-      <div class="forgotPassword">
-        <span routerLink="/forgot-password">¿Has olvidado la contraseña?</span>
-      </div>
-    </div>
-    <div class="redirectToLogin">
-      <span>¿No tienes cuenta?<span class="redirect" routerLink="/register-user"> Crear cuenta</span></span>
-    </div>
-  </div>
-</div>
+<form>
+  <h1 class="h3 mb-3 fw-normal">Iniciar sesión <hr></h1>
+  <p><img class="googlelogo" src="..\assets\Google__G__Logo.svg.png" width="50px"></p>
+  <button type="button" (click)="authService.GoogleAuth()" class="btn btn-danger">Iniciar sesión con google</button>
+  <p class="mt-5 mb-3 text-muted"></p>
+</form>
+
 

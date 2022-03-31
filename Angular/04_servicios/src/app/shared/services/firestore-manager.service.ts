@@ -13,7 +13,10 @@ export class FirestoreManagerService {
   tutorialsRef: AngularFireList<any>;
   constructor(private db: AngularFireDatabase, private auth: AuthService) {
     const user = JSON.parse(localStorage.getItem('user')!)
-    this.dbPath += user.uid;
+    if(user !== null)
+    {
+      this.dbPath += user.uid;
+    }
     this.tutorialsRef = db.list(this.dbPath);
   }
   getAll(): AngularFireList<any> {

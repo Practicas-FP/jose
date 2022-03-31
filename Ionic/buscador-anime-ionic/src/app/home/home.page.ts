@@ -7,7 +7,13 @@ import { DataService, Message } from '../services/data.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  public animes = [
+    {title: 'Full Metal', img: ''},
+    {title: 'Violet Evergarden', img: ''}
+  ];
+
   constructor(private data: DataService) {}
+
 
   refresh(ev) {
     setTimeout(() => {

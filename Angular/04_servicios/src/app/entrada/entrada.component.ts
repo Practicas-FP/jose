@@ -16,31 +16,11 @@ export class EntradaComponent implements OnInit {
   public anime!: Anime;
   public esFavorito?: boolean = false;
 
-  constructor(public db: FirestoreManagerService, public authService: AuthService) {
+  constructor() {
 
    }
 
   ngOnInit(): void {
 
   }
-
-  saveTutorial(animeid: string): void {
-    this.db.create(animeid).then(() => {
-      console.log('Created new item successfully!');
-    });
-  }
-
-  public borrarFavorito(animeid: string):void {
-    this.db.delete(animeid + '').then(() => {
-      console.log('Deleted item successfully!');
-    });
-  }
-
-  reloadCurrentPage() {
-    window.location.reload();
-   }
-
-
-
-
 }

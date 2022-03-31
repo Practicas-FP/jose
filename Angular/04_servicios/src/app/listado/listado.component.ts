@@ -21,8 +21,7 @@ export class ListadoComponent implements OnInit {
   public tipo: string = "";
   public p: number = 1;
 
-  constructor(private entradaService: EntradaService, private db: FirestoreManagerService,
-    private authService: AuthService) {
+  constructor(private entradaService: EntradaService) {
     this.tituloBusqueda = "";
   }
 
@@ -67,17 +66,7 @@ export class ListadoComponent implements OnInit {
 
   }
 
-  recuperarFavoritos(): void {
-    this.db.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ key: c.payload.key, ...c.payload.val() })
-        )
-      )
-    ).subscribe(data => {
-      this.listadoFavoritos = data;
-    });
-  }
+
 
 
   public mostrarEntrada(titulo: string): void {
