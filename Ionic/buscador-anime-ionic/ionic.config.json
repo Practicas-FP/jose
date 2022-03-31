@@ -1,0 +1,7 @@
+{
+  "name": "BuscadorAnimeIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
