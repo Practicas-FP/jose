@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Select Searchtype</ion-label>
+    <ion-select>
+      <ion-select-option value="">All</ion-select-option>
+      <ion-select-option value="movie">Movie</ion-select-option>
+      <ion-select-option value="series">Series</ion-select-option>
+      <ion-select-option value="episode">Episode</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-list>
+
+    <ion-item button *ngFor="let item of (listadoAnimes | async)" [routerLink]="['/', 'movies', item.imdbID]">
+      <ion-avatar slot="start">
+        <img [src]="item.Poster">
+      </ion-avatar>
+
+      <ion-label text-wrap>
+        <h3>{{ item.data.entrada.title }}</h3>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

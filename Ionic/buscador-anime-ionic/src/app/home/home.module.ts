@@ -1,3 +1,5 @@
+import { EntradaAnimeComponent } from './../entrada-anime/entrada-anime.component';
+import { LoaderPageModule } from './../pages/loader/loader.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -13,7 +15,9 @@ import { MessageComponentModule } from '../message/message.module';
     FormsModule,
     IonicModule,
     MessageComponentModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    LoaderPageModule,
+    EntradaAnimeComponent
   ],
   declarations: [HomePage]
 })
