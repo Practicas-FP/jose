@@ -19,22 +19,5 @@ export class AnimeApiServiceService {
     this.ordenarPor = '';
     this.apiURL = 'https://api.jikan.moe/v4/anime/';
   }
-  public recuperarEntradas(): void {
-    this.http.get('http://ionic.io', {}, {})
-    .then(data => {
 
-      console.log(data.status);
-      console.log(data.data); // data received by server
-      console.log(data.headers);
-      console.log(data);
-
-    })
-    .catch(error => {
-
-      console.log(error.status);
-      console.log(error.error); // error message as string
-      console.log(error.headers);
-
-    });
-  }
 }

@@ -8,6 +8,7 @@ import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-en
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListadoFavoritosComponent } from './listado-favoritos/listado-favoritos.component';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   { path: 'listado', component: ListadoComponent },
@@ -15,8 +16,8 @@ const routes: Routes = [
   { path: 'detalles', component: DetallesAnimeComponent},
   { path: 'login', component: LoginComponent},
   { path: '', redirectTo: '/listado', pathMatch: 'full'},
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'favoritos', component: ListadoFavoritosComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]  },
+  { path: 'favoritos', component: ListadoFavoritosComponent, canActivate: [AuthGuard] },
   { path: '**', component: PaginaNoEncontradaComponent}
 ];
 
