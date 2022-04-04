@@ -11,7 +11,8 @@ import { MovieService, SearchType } from './../../services/movie.service';
 export class MoviesPage implements OnInit {
   results: any;
   searchTerm = '';
-  type: SearchType = SearchType.all;
+  tipo = '';
+  estadoEmision = '';
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
@@ -20,10 +21,11 @@ export class MoviesPage implements OnInit {
   searchChanged() {
     // Call our service function which returns an Observable
     this.movieService.setNombreBusqueda(this.searchTerm);
-    this.movieService.searchData(this.searchTerm, this.type).subscribe(
+    this.movieService.setTipo(this.tipo);
+    this.movieService.setEstadoEmision(this.estadoEmision);
+    this.movieService.searchData().subscribe(
       (data) => {
         this.results = data;
-        console.log('data');
       },
       (error) => {
 

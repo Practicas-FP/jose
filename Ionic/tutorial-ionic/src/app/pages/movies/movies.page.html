@@ -7,11 +7,11 @@
 <ion-content>
 
   <ion-searchbar placeholder="Busca anime por nombre"
-  [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)"></ion-searchbar>
+  [(ngModel)]="searchTerm" (ionChange)="searchChanged()"></ion-searchbar>
 
   <ion-item>
     <ion-label>Selecciona un tipo</ion-label>
-    <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
+    <ion-select [(ngModel)]="tipo" (ionChange)="searchChanged()">
       <ion-select-option value="">Todos</ion-select-option>
       <ion-select-option value="tv">TV</ion-select-option>
       <ion-select-option value="movie">Película</ion-select-option>
@@ -21,7 +21,7 @@
 
   <ion-item>
     <ion-label>Selecciona estado de emisión</ion-label>
-    <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
+    <ion-select [(ngModel)]="estadoEmision" (ionChange)="searchChanged()">
       <ion-select-option value="">Cualquiera</ion-select-option>
       <ion-select-option value="airing">En emision</ion-select-option>
       <ion-select-option value="complete">Emitido</ion-select-option>

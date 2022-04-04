@@ -19,11 +19,10 @@ export class MovieService {
   public tipo = '';
   public ordenarPor = '';
   constructor(private http: HttpClient) { }
-  searchData(title: string, type: SearchType): Observable<any> {
+  searchData(): Observable<any> {
     // eslint-disable-next-line max-len
     return this.http.get('https://api.jikan.moe/v4/anime?q=' + this.nombre + '&status=' +
-    this.estadoEmision + '&type=' + this.tipo + '&limit=40&sfw&' + 'order_by=' +
-     this.ordenarPor + '&sort=desc').pipe(
+    this.estadoEmision + '&type=' + this.tipo + '&limit=3&sfw&' + 'order_by=score&sort=desc').pipe(
       // eslint-disable-next-line @typescript-eslint/dot-notation
       map(results => results['data']));
   }
