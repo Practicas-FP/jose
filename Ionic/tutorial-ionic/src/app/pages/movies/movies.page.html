@@ -1,48 +1,44 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>My Movie Search</ion-title>
+    <ion-title>Buscador de anime</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)"></ion-searchbar>
+  <ion-searchbar placeholder="Busca anime por nombre"
+  [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)"></ion-searchbar>
 
   <ion-item>
-    <ion-label>Select Searchtype</ion-label>
+    <ion-label>Selecciona un tipo</ion-label>
     <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
-      <ion-select-option value="">All</ion-select-option>
-      <ion-select-option value="movie">Movie</ion-select-option>
-      <ion-select-option value="series">Series</ion-select-option>
-      <ion-select-option value="episode">Episode</ion-select-option>
+      <ion-select-option value="">Todos</ion-select-option>
+      <ion-select-option value="tv">TV</ion-select-option>
+      <ion-select-option value="movie">Película</ion-select-option>
+      <ion-select-option value="ova">OVA</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Selecciona estado de emisión</ion-label>
+    <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
+      <ion-select-option value="">Cualquiera</ion-select-option>
+      <ion-select-option value="airing">En emision</ion-select-option>
+      <ion-select-option value="complete">Emitido</ion-select-option>
+      <ion-select-option value="upcoming">Por emitir</ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-list>
 
     <ion-item button *ngFor="let item of results" [routerLink]="['/', 'movies', item.mal_id]">
-      <ion-avatar slot="start">
-        <img [src]="item.images.jpg.large_image_url">
-      </ion-avatar>
-
-      <ion-label text-wrap>
-        <h3>{{ item.Title }}</h3>
-        {{ item.Year }}
-      </ion-label>
-
-      <ion-icon slot="end" *ngIf="item.Type === 'movie'" name="videocam"></ion-icon>
-      <ion-icon slot="end" *ngIf="item.Type === 'series'" name="tv"></ion-icon>
-      <ion-icon slot="end" *ngIf="item.Type === 'game'" name="logo-game-controller-b"></ion-icon>
-
       <ion-card>
         <ion-card-header>
           <ion-card-subtitle>{{item.type}}</ion-card-subtitle>
           <ion-card-title>{{item.title}}</ion-card-title>
         </ion-card-header>
-
         <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          <ion-img [src]="item.images.jpg.large_image_url"></ion-img>
         </ion-card-content>
       </ion-card>
     </ion-item>

@@ -19,6 +19,7 @@ export class MoviesPage implements OnInit {
   }
   searchChanged() {
     // Call our service function which returns an Observable
+    this.movieService.setNombreBusqueda(this.searchTerm);
     this.movieService.searchData(this.searchTerm, this.type).subscribe(
       (data) => {
         this.results = data;
