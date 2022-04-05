@@ -17,4 +17,9 @@
       <ion-label>Email: {{user.email}}</ion-label>
     </ion-item>
   </ion-card-content>
+  <ion-card-content>
+    <ion-col align-self-center>
+      <ion-button (click)="authService.signOut()" expand="block" color="danger">Cerrar sesión</ion-button>
+    </ion-col>
+  </ion-card-content>
 </ion-card>
