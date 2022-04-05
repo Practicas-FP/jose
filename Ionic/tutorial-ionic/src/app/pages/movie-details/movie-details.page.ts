@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { FirebaseManagerService } from 'src/app/services/firebase-manager.service';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -10,21 +12,38 @@ import { MovieService } from 'src/app/services/movie.service';
 export class MovieDetailsPage implements OnInit {
 
   information = null;
+  esFav = false;
+  id = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService) { }
+  constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService,
+    private db: FirebaseManagerService) { }
 
   ngOnInit() {
     // Get the ID that was passed with the URL
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
 
     // Get the information from the API
-    this.movieService.getDetails(id).subscribe(result => {
+    this.movieService.getDetails(this.id).subscribe(result => {
       this.information = result;
     });
+    this.esFavorito(this.id);
+    console.log(this.esFav);
   }
 
-  openWebsite() {
-    window.open(this.information.Website, '_blank');
+  esFavorito(animeid: string){
+    this.db.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      data.forEach(element => {
+        if(animeid === element.animeid){
+          this.esFav = true;
+        }
+      });
+    });
   }
 
 }
