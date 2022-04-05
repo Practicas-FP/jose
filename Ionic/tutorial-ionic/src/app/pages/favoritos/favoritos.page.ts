@@ -14,6 +14,10 @@ export class FavoritosPage implements OnInit {
   constructor(public db: FirebaseManagerService, public animeapi: MovieService) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.listado = [];
     this.recuperarFavoritos();
   }
 
@@ -38,7 +42,6 @@ export class FavoritosPage implements OnInit {
       (data) => {
         //this.listaFavoritos = data.data;
         this.listado.push(data);
-        console.log(data);
       },
       (error) => {
         console.log('error');

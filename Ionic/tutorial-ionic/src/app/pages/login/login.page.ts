@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
@@ -8,9 +9,20 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(public auth: AuthServiceService) { }
+  constructor(public auth: AuthServiceService, public router: Router) { }
 
   ngOnInit() {
+
+  }
+
+  ionViewWillEnter(){
+    if(this.auth.isLoggedIn){
+      this.router.navigate(['dashboard']);
+      console.log('logeado');
+    }
+    else{
+      console.log('No logeado');
+    }
     console.log(this.auth.isLoggedIn);
   }
 

@@ -26,11 +26,11 @@ export class MovieDetailsPage implements OnInit {
     this.movieService.getDetails(this.id).subscribe(result => {
       this.information = result;
     });
-    this.esFavorito(this.id);
-    console.log(this.esFav);
+    this.esFavorito();
+    console.log('onInit');
   }
 
-  esFavorito(animeid: string){
+  esFavorito(){
     this.db.getAll().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
@@ -38,11 +38,29 @@ export class MovieDetailsPage implements OnInit {
         )
       )
     ).subscribe(data => {
-      data.forEach(element => {
-        if(animeid === element.animeid){
+      const favs = data;
+      console.log(data);
+      favs.forEach(element => {
+        console.log(this.id + 'vs' + element.animeid + 'as');
+        if(this.id === element.key){
           this.esFav = true;
+          console.log(this.esFav);
         }
       });
+    });
+  }
+
+  guardarAnime(animeid: string): void {
+    this.db.create(animeid).then(() => {
+      console.log('Created new item successfully!');
+      this.esFav = true;
+    });
+  }
+
+   borrarFavorito(animeid: string): void {
+    this.db.delete(animeid + '').then(() => {
+      console.log('Deleted item successfully!');
+      this.esFav = false;
     });
   }
 
