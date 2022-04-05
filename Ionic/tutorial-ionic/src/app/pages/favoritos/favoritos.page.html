@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item button *ngFor="let item of listado" [routerLink]="['/', 'movies', item.mal_id]">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>{{item.type}}</ion-card-subtitle>
+          <ion-card-title>{{item.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-img [src]="item.images.jpg.large_image_url"></ion-img>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

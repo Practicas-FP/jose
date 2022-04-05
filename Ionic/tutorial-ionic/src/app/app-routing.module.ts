@@ -34,6 +34,14 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'sobre-mi',
+    loadChildren: () => import('./pages/sobre-mi/sobre-mi.module').then( m => m.SobreMiPageModule)
+  },
+  {
+    path: 'favoritos',
+    loadChildren: () => import('./pages/favoritos/favoritos.module').then( m => m.FavoritosPageModule)
   }
 ];
 
