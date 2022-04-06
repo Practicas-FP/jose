@@ -22,8 +22,11 @@ export class LoginPage implements OnInit {
     }
     else{
       console.log('No logeado');
+      this.router.navigate(['login']);
     }
     console.log(this.auth.isLoggedIn);
   }
-
+  reload(){
+    window.location.assign('/dashboard');
+  }
 }

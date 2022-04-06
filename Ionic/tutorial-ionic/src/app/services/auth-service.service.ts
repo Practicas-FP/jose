@@ -4,7 +4,6 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 import { Router } from '@angular/router';
 import * as auth from 'firebase/auth';
 
-
 export interface User {
   uid: string;
   email: string;

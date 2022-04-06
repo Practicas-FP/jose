@@ -1,11 +1,11 @@
-<ion-header>
+<ion-header (click)="reload()">
   <ion-toolbar>
     <ion-title>
       Acceso
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="auth-form">
+<ion-content *ngIf="auth.isLoggedIn === false" class="auth-form">
   <ion-grid>
     <ion-row>
       <ion-col align-self-center>
