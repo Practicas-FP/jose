@@ -12,6 +12,10 @@
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
+          <ion-item>
+            <ion-label>Modo noche</ion-label>
+            <ion-toggle [ngModel]="darkMode" (ionChange)="change()"></ion-toggle>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>

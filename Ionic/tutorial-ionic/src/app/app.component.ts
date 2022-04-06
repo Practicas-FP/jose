@@ -12,5 +12,13 @@ export class AppComponent {
     { title: 'Favoritos', url: 'favoritos', icon: 'people' },
     { title: 'Sobre mí', url: 'sobre-mi', icon: 'people' },
   ];
-  constructor() {}
+  darkMode = false;
+  constructor() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    this.darkMode = prefersDark.matches;
+  }
+  change() {
+    this.darkMode = !this.darkMode;
+    document.body.classList.toggle('dark');
+    }
 }
