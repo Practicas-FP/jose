@@ -5,7 +5,7 @@
     <ion-card-subtitle>Área de usuario</ion-card-subtitle>
     <ion-card-title>{{(user.displayName) ? user.displayName : 'User'}}</ion-card-title>
     <ion-avatar>
-      <img src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}">
+      <img (click)="sacarCamara()" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}">
     </ion-avatar>
   </ion-card-header>
 
@@ -23,3 +23,4 @@
     </ion-col>
   </ion-card-content>
 </ion-card>
+

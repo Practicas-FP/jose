@@ -11,6 +11,7 @@ export class AppComponent {
     { title: 'Área de usuario', url: 'dashboard', icon: 'people' },
     { title: 'Favoritos', url: 'favoritos', icon: 'people' },
     { title: 'Sobre mí', url: 'sobre-mi', icon: 'people' },
+    { title: 'Photo test', url: 'photo-test', icon: 'people' },
   ];
   darkMode = false;
   constructor() {

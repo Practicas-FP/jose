@@ -43,6 +43,10 @@ const routes: Routes = [
   {
     path: 'favoritos', canActivate: [AuthGuardGuard],
     loadChildren: () => import('./pages/favoritos/favoritos.module').then( m => m.FavoritosPageModule)
+  },
+  {
+    path: 'photo-test',
+    loadChildren: () => import('./pages/photo-test/photo-test.module').then( m => m.PhotoTestPageModule)
   }
 ];
 
