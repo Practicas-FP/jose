@@ -4,6 +4,7 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Storage } from '@capacitor/storage';
 import { Dir } from 'fs';
 import { AuthServiceService, User } from './auth-service.service';
+import { FirebaseManagerService } from './firebase-manager.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class PhotoService {
   public photo: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
   private PHOTO_STORAGE = 'photos';
-  constructor(public authService: AuthServiceService) { }
+  constructor(public authService: AuthServiceService, public db: FirebaseManagerService) { }
 
   public async addNewToGallery() {
     // Take a photo
@@ -30,6 +31,12 @@ export class PhotoService {
     console.log(this.photo);
     console.log();
     localStorage.setItem('icon', base64Data);
+    this.db.subirFoto(base64Data);
+    this.db.recuperarFoto().snapshotChanges().subscribe(data => {
+      const fotoRecuperada = data;
+      console.log(data);
+    });;
+    console.log();
   }
 
   public async loadSaved() {

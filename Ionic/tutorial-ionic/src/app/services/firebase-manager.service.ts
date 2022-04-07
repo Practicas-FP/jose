@@ -7,12 +7,13 @@ import { AuthServiceService } from './auth-service.service';
 })
 export class FirebaseManagerService {
   tutorialsRef: AngularFireList<any>;
-  private dbPath = '/listafavoritos/';
+  private dbPath = '';
+  private user: any;
   constructor(private db: AngularFireDatabase, private auth: AuthServiceService) {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if(user !== null)
+    this.user = JSON.parse(localStorage.getItem('user'));
+    if(this.user !== null)
     {
-      this.dbPath += user.uid;
+      this.dbPath += this.user.uid + '/listafavoritos/';
     }
     this.tutorialsRef = db.list(this.dbPath);
   }
@@ -31,5 +32,11 @@ export class FirebaseManagerService {
   }
   deleteAll(): Promise<void> {
     return this.tutorialsRef.remove();
+  }
+  subirFoto(base64: string){
+    return this.db.list(this.user.uid).set('icono', {base64img:base64});
+  }
+  recuperarFoto(): AngularFireList<any>{
+    return this.db.list(this.user.uid + '/icono/base64img');
   }
 }

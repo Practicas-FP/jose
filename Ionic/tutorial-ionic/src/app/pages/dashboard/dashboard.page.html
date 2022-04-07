@@ -4,7 +4,7 @@
   <ion-card-header>
     <ion-card-subtitle>Área de usuario</ion-card-subtitle>
     <ion-card-title>{{(user.displayName) ? user.displayName : 'User'}}</ion-card-title>
-    <ion-avatar (click)="sacarCamara()">
+    <ion-avatar *ngIf="src === null" (click)="sacarCamara()">
       <img src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}">
     </ion-avatar>
     <ion-avatar *ngIf="src">
