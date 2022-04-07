@@ -34,7 +34,7 @@ export class PhotoService {
     this.db.subirFoto(base64Data);
     this.db.recuperarFoto().snapshotChanges().subscribe(data => {
       const fotoRecuperada = data;
-      console.log(data);
+      console.log(data[0]);
     });;
     console.log();
   }

@@ -36,7 +36,7 @@ export class FirebaseManagerService {
   subirFoto(base64: string){
     return this.db.list(this.user.uid).set('icono', {base64img:base64});
   }
-  recuperarFoto(): AngularFireList<any>{
-    return this.db.list(this.user.uid + '/icono/base64img');
+  recuperarFoto(): any{
+    return this.db.list(this.user.uid + '/icono/');
   }
 }
