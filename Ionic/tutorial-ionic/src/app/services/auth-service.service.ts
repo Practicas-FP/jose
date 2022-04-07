@@ -92,6 +92,7 @@ export class AuthServiceService {
   // Sign in with Google
   googleAuth() {
     return this.authLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+      location.reload();
       if (res) {
         this.router.navigate(['dashboard']);
       }

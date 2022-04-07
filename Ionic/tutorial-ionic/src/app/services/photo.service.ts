@@ -10,6 +10,7 @@ import { AuthServiceService, User } from './auth-service.service';
 })
 export class PhotoService {
   public photos: UserPhoto[] = [];
+  public photo: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
   private PHOTO_STORAGE = 'photos';
   constructor(public authService: AuthServiceService) { }
@@ -22,13 +23,13 @@ export class PhotoService {
       quality: 100
     });
 
-      // Save the picture and add it to photo collection
-    const savedImageFile = await this.savePicture(capturedPhoto);
-    this.photos.unshift(savedImageFile);
-    Storage.set({
-      key: this.PHOTO_STORAGE,
-      value: JSON.stringify(this.photos),
-    });
+    // Save the picture and add it to photo collection
+    //this.readAsBase64(capturedPhoto).then(result => { }).catch(error => console.log());
+    const base64Data = await this.readAsBase64(capturedPhoto);
+    this.photo = base64Data;
+    console.log(this.photo);
+    console.log();
+    localStorage.setItem('icon', base64Data);
   }
 
   public async loadSaved() {
@@ -39,7 +40,7 @@ export class PhotoService {
     // Display the photo by reading into base64 format
     for (const photo of this.photos) {
       // Read each saved photo's data from the Filesystem
-        const readFile = await Filesystem.readFile({
+      const readFile = await Filesystem.readFile({
         path: photo.filepath,
         directory: Directory.Data,
       });
@@ -51,23 +52,25 @@ export class PhotoService {
   }
 
   private async savePicture(photo: Photo) {
-      // Convert photo to base64 format, required by Filesystem API to save
-  const base64Data = await this.readAsBase64(photo);
+    // Convert photo to base64 format, required by Filesystem API to save
+    const base64Data = await this.readAsBase64(photo);
+    this.photo = base64Data;
+    console.log(photo);
 
-  // Write the file to the data directory
-  const fileName = new Date().getTime() + '.jpeg';
-  const savedFile = await Filesystem.writeFile({
-    path: fileName,
-    data: base64Data,
-    directory: Directory.Data
-  });
+    // Write the file to the data directory
+    const fileName = new Date().getTime() + '.jpeg';
+    const savedFile = await Filesystem.writeFile({
+      path: fileName,
+      data: base64Data,
+      directory: Directory.Data
+    });
 
-  // Use webPath to display the new image instead of base64 since it's
-  // already loaded into memory
-  return {
-    filepath: fileName,
-    webviewPath: photo.webPath
-  };
+    // Use webPath to display the new image instead of base64 since it's
+    // already loaded into memory
+    return {
+      filepath: fileName,
+      webviewPath: photo.webPath
+    };
   }
 
   private async readAsBase64(photo: Photo) {
@@ -82,7 +85,7 @@ export class PhotoService {
     const reader = new FileReader();
     reader.onerror = reject;
     reader.onload = () => {
-        resolve(reader.result);
+      resolve(reader.result);
     };
     reader.readAsDataURL(blob);
   });

@@ -11,7 +11,6 @@ export class PhotoTestPage implements OnInit {
   constructor(public photoService: PhotoService) { }
 
   async ngOnInit() {
-    await this.photoService.loadSaved();
   }
 
   addPhotoToGallery() {
