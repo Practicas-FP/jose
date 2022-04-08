@@ -6,7 +6,7 @@ import { AuthServiceService } from './auth-service.service';
   providedIn: 'root'
 })
 export class FirebaseManagerService {
-  tutorialsRef: AngularFireList<any>;
+  direccionDB: AngularFireList<any>;
   private dbPath = '';
   private user: any;
   constructor(private db: AngularFireDatabase, private auth: AuthServiceService) {
@@ -15,28 +15,27 @@ export class FirebaseManagerService {
     {
       this.dbPath += this.user.uid + '/listafavoritos/';
     }
-    this.tutorialsRef = db.list(this.dbPath);
+    this.direccionDB = db.list(this.dbPath);
   }
   getAll(): AngularFireList<any> {
-    return this.tutorialsRef;
+    return this.direccionDB;
   }
-  create(tutorial: any): any {
-
-    return this.tutorialsRef.set(tutorial + '', {animeid:tutorial});
+  create(codigoAnime: any): any {
+    return this.direccionDB.set(codigoAnime + '', {animeid:codigoAnime});
   }
   update(key: string, value: any): Promise<void> {
-    return this.tutorialsRef.update(key, value);
+    return this.direccionDB.update(key, value);
   }
   delete(key: string): Promise<void> {
-    return this.tutorialsRef.remove(key);
+    return this.direccionDB.remove(key);
   }
   deleteAll(): Promise<void> {
-    return this.tutorialsRef.remove();
+    return this.direccionDB.remove();
   }
   subirFoto(base64: string){
     return this.db.list(this.user.uid).set('icono', {base64img:base64});
   }
-  recuperarFoto(): any{
+  recuperarFoto(): AngularFireList<any>{
     return this.db.list(this.user.uid + '/icono/');
   }
 }

@@ -10,6 +10,10 @@
     <ion-avatar *ngIf="src">
       <img [src]="src">
     </ion-avatar>
+    <ion-button (click)="photoService.addNewToGallery()" color="light">
+      <ion-icon slot="icon-only" name="camera-outline" color="medium">
+      </ion-icon>
+    </ion-button>
   </ion-card-header>
 
   <ion-card-content>
@@ -21,9 +25,6 @@
     </ion-item>
   </ion-card-content>
   <ion-card-content>
-    <ion-col align-self-center>
       <ion-button (click)="authService.signOut()" expand="block" color="danger">Cerrar sesión</ion-button>
-    </ion-col>
   </ion-card-content>
 </ion-card>
-

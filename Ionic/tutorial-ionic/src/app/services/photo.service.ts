@@ -3,6 +3,7 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Storage } from '@capacitor/storage';
 import { Dir } from 'fs';
+import { map } from 'rxjs/operators';
 import { AuthServiceService, User } from './auth-service.service';
 import { FirebaseManagerService } from './firebase-manager.service';
 
@@ -32,11 +33,21 @@ export class PhotoService {
     console.log();
     localStorage.setItem('icon', base64Data);
     this.db.subirFoto(base64Data);
-    this.db.recuperarFoto().snapshotChanges().subscribe(data => {
-      const fotoRecuperada = data;
-      console.log(data[0]);
-    });;
-    console.log();
+
+      this.db.recuperarFoto().snapshotChanges().pipe(
+        map(changes =>
+          changes.map(c =>
+            ({ key: c.payload.key, ...c.payload.val() })
+          )
+        )
+      ).subscribe(data => {
+        data.forEach(element => {
+          console.log(element);
+        });
+        console.log(data);
+      });
+
+
   }
 
   public async loadSaved() {
