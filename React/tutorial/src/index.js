@@ -2,6 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from './component/home';
+import Contact from './component/contact';
+import About from './component/about';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom';
 
 import { Container } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
@@ -12,6 +22,9 @@ import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 import { CardGroup } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
+import DetallesAnime from './component/detalles-anime';
 
 
 function Square(props) {
@@ -149,10 +162,11 @@ class NavigationBar extends React.Component {
     return (
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Busqueda de anime</Navbar.Brand>
+          <Navbar.Brand>Busqueda de anime</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Inicio</Nav.Link>
-            <Nav.Link href="#features">Acerca de</Nav.Link>
+            <Link to="/" className="nav-link">Inicio</Link>
+            <Link to="/about" className="nav-link">Acerca de</Link>
+            <Link to="/" className="nav-link">Inicio</Link>
           </Nav>
         </Container>
       </Navbar>
@@ -206,31 +220,17 @@ class ApiTest extends React.Component {
       <h1> Pleses wait some time.... </h1> </div>;
 
     return (
-      <div className="App">
+      <Container>
+        <Router>
         <NavigationBar />
-        <Container>
-          <input onChange={this.getInputValue}></input>
-          <button onClick={() => this.hacerBusqueda()}>Buscar</button>
-        </Container>
-
-        <Form className="d-flex">
-          <FormControl
-            type="search"
-            placeholder="Buscar..."
-            className="me-2"
-            aria-label="Search"
-            onChange={this.getInputValue}
-          />
-          <Button variant="outline-success" onClick={() => this.hacerBusqueda()}>Buscar</Button>
-        </Form>
-        {
-          items.data.map((item) => (
-            <ol key={item.mal_id} >
-              <Entrada item={item} />
-            </ol>
-          ))
-        }
-      </div>
+          <Routes>
+            <Route exact path='/' element={< Home />}></Route>
+            <Route exact path='/about' element={< About />}></Route>
+            <Route exact path='/contact' element={< Contact />}></Route>
+            <Route exact path='/anime/:id' element={< DetallesAnime />}></Route>
+          </Routes>
+        </Router>
+      </Container>
     );
   }
 }
