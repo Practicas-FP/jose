@@ -17,18 +17,18 @@ function DetallesAnime() {
 
 
     useEffect(() => {
+        fetch(('https://api.jikan.moe/v4/anime/' + id +'/episodes'))
+        .then((res) => res.json())
+        .then((json) => {
+            setEpisodios(json);
+        });
         // Actualiza el título del documento usando la API del navegador
         fetch(
             "https://api.jikan.moe/v4/anime/" + id)
             .then((res) => res.json())
             .then((json) => {
                 setEntrada(json);
-            })
-        fetch(('https://api.jikan.moe/v4/anime/' + id +'/episodes'))
-        .then((res) => res.json())
-        .then((json) => {
-            setEpisodios(json);
-        })
+            });
     });    
     //('https://api.jikan.moe/v4/anime/' + id)
 
@@ -54,7 +54,6 @@ function DetallesAnime() {
                 <p>Fecha de emisión: {entrada.data.aired.string}</p>
                 <p>Puntuación: {entrada.data.score}</p>
                 <p>Temporada: {entrada.data.season} {entrada.data.year}</p>
-                <p>Estudio de animación: {entrada.data.studios[0].name}</p>
                 <p>Género:     </p >
             </div >
             <div className="item2">
@@ -69,11 +68,13 @@ function DetallesAnime() {
                         <th>Título</th>
                         <th>Fecha de emisión</th>
                     </tr>
+                    {episodios.data.map((episodio) => (
                     <tr >
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{episodio.mal_id}</td>
+                        <td>{episodio.title}</td>
+                        <td>{episodio.aired.slice(0, 10)}</td>
                     </tr>
+                    ))}
                 </table>
             </div >
         </div >
