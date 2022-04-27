@@ -45,7 +45,7 @@ class Home extends React.Component {
 
     hacerBusqueda() {
         fetch(
-            "https://api.jikan.moe/v4/anime?q=" + this.state.searchName + "&page=" + this.state.currentPage + "&status=" + this.state.status + "&type=" + this.state.type + "&limit=10&sfw&order_by=score&sort=desc")
+            "https://api.jikan.moe/v4/anime?q=" + this.state.searchName + "&page=" + this.state.currentPage + "&status=" + this.state.status + "&type=" + this.state.type + "&limit=8&sfw&order_by=score&sort=desc")
             .then((res) => res.json())
             .then((json) => {
                 this.setState({

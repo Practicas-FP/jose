@@ -14,40 +14,61 @@ function DetallesAnime() {
     const { id } = useParams();
     const [entrada, setEntrada] = useState();
     const [episodios, setEpisodios] = useState();
+    const [dataIsLoaded, setDataIsLoaded] = useState(false);
+    const [episodedDataIsLoaded, setEpisodeDataIsLoaded] = useState(false);
 
 
     useEffect(() => {
-        fetch(('https://api.jikan.moe/v4/anime/' + id +'/episodes'))
-        .then((res) => res.json())
-        .then((json) => {
-            setEpisodios(json);
-        });
-        // Actualiza el título del documento usando la API del navegador
+        if (!entrada) {
+            recuperarDetalles();
+            console.log('useEffect detalles');
+
+
+        }
+        if (!episodios) {
+            recuperarEpisodios();
+            console.log('useEffect episodios');
+
+        }
+
+    }, []);
+
+    function recuperarDetalles() {
         fetch(
             "https://api.jikan.moe/v4/anime/" + id)
             .then((res) => res.json())
             .then((json) => {
                 setEntrada(json);
-            });
-    });    
+                setDataIsLoaded(true);
+            }).catch();
+    }
+
+    function recuperarEpisodios() {
+        fetch(('https://api.jikan.moe/v4/anime/' + id + '/episodes'))
+            .then((res) => res.json())
+            .then((json) => {
+                setEpisodios(json);
+                setEpisodeDataIsLoaded(true);
+            }).catch();
+    }
     //('https://api.jikan.moe/v4/anime/' + id)
 
 
 
 
-    if (!entrada || !episodios) return <div>
-    <h1> Pleses wait some time.... </h1> </div>;
-
+    if (!dataIsLoaded || !episodedDataIsLoaded) return <div>
+        <h1> Pleses wait some time.... </h1> </div>;
+        
     return (
         <div className="grid-container">
             <div className="item1">
-                <img src={entrada.data.images.jpg.large_image_url} />
+                <img src={entrada.data.images.jpg.large_image_url} alt="hola" />
                 <h3>{entrada.data.title}</h3>
 
-                <h4>Títulos alternativos <hr/> </h4>
+                <h4>Títulos alternativos <hr /> </h4>
                 <p>Título original: {entrada.data.title} ({entrada.data.title_japanese})  </p>
                 <p>Título en inglés: {entrada.data.title_english}</p>
-                <h4>Información <hr/></h4>
+                <h4>Información <hr /></h4>
                 <p>Tipo: {entrada.data.type}</p>
                 <p>Fuente: {entrada.data.source}</p>
                 <p>Número de episodios: {entrada.data.episodes}</p>
@@ -61,20 +82,24 @@ function DetallesAnime() {
                 <p>{entrada.data.synopsis}</p>
             </div>
             <div className="item3">
-                <h2>Lista de episodios<hr /></h2>
                 <table>
-                    <tr>
-                        <th>Número</th>
-                        <th>Título</th>
-                        <th>Fecha de emisión</th>
-                    </tr>
-                    {episodios.data.map((episodio) => (
-                    <tr >
-                        <td>{episodio.mal_id}</td>
-                        <td>{episodio.title}</td>
-                        <td>{episodio.aired.slice(0, 10)}</td>
-                    </tr>
-                    ))}
+                    <thead>
+                        <tr>
+                            <th>Número</th>
+                            <th>Título</th>
+                            <th>Fecha de emisión</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {episodios.data.map((episodio) => (
+                            <tr key={episodio.mal_id}>
+                                <td>{episodio.mal_id}</td>
+                                <td>{episodio.title}</td>
+                                <td>{episodio.aired.slice(0, 10)}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+
                 </table>
             </div >
         </div >

@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './component/home';
 import Contact from './component/contact';
 import About from './component/about';
+import {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
 
 import {
   BrowserRouter as Router,
@@ -285,8 +287,11 @@ class Child1 extends React.Component {
 };
 
 // ========================================
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
 
-ReactDOM.render(
-  <ApiTest />,
-  document.getElementById('root')
+root.render(
+  <StrictMode> 
+    <ApiTest />
+  </StrictMode>
 );
