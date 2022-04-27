@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './component/home';
 import Contact from './component/contact';
 import About from './component/about';
+import Login from './component/login'
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 
@@ -168,7 +169,7 @@ class NavigationBar extends React.Component {
           <Nav className="me-auto">
             <Link to="/" className="nav-link">Inicio</Link>
             <Link to="/about" className="nav-link">Acerca de</Link>
-            <Link to="/" className="nav-link">Inicio</Link>
+            <Link to="/login" className="nav-link">Acceso</Link>
           </Nav>
         </Container>
       </Navbar>
@@ -230,6 +231,7 @@ class ApiTest extends React.Component {
             <Route exact path='/about' element={< About />}></Route>
             <Route exact path='/contact' element={< Contact />}></Route>
             <Route exact path='/anime/:id' element={< DetallesAnime />}></Route>
+            <Route exact path='/login' element={< Login />}></Route>
           </Routes>
         </Router>
       </Container>
@@ -291,7 +293,7 @@ const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
 root.render(
-  <StrictMode> 
+  
     <ApiTest />
-  </StrictMode>
+  
 );

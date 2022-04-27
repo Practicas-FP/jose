@@ -81,7 +81,7 @@ function DetallesAnime() {
                 <h2>Sinopsis<hr /></h2>
                 <p>{entrada.data.synopsis}</p>
             </div>
-            <div className="item3">
+            <div className="item3">            
                 <table>
                     <thead>
                         <tr>
