@@ -19,6 +19,7 @@ import {
     Link,
     useParams
 } from 'react-router-dom';
+import TarjetaAnime from './TarjetaAnime';
 
 class Home extends React.Component {
     constructor(props) {
@@ -105,7 +106,7 @@ class Home extends React.Component {
         return (
             <Container>
 
-                <Form className="d-flex">
+                <div className="d-flex"  onSubmit={this.hacerBusqueda}>
                     <FormControl
                         type="search"
                         placeholder="Buscar..."
@@ -130,17 +131,11 @@ class Home extends React.Component {
                         <option value="ova">OVA</option>
                         <option value="special">Special</option>
                     </FormSelect>
-                </Form>
+                </div>
                 <Row xs={1} sm={2} md={4} className="g-4">
                     {items.data.map((item) => (
                         <Col key={item.mal_id}>
-                            <Card>
-                                <Card.Img variant="top" src={item.images.jpg.image_url} />
-                                <Card.Body>
-                                    <Card.Title>{item.title}</Card.Title>
-                                    <Link to={`/anime/${item.mal_id}/`}>Detalles</Link>
-                                </Card.Body>
-                            </Card>
+                        <TarjetaAnime item={item} />
                         </Col>
                     ))}
                 </Row>

@@ -8,6 +8,7 @@ import {
     Link,
     useParams
 } from 'react-router-dom';
+import { Container } from "react-bootstrap";
 
 
 function DetallesAnime() {
@@ -19,18 +20,8 @@ function DetallesAnime() {
 
 
     useEffect(() => {
-        if (!entrada) {
-            recuperarDetalles();
-            console.log('useEffect detalles');
-
-
-        }
-        if (!episodios) {
-            recuperarEpisodios();
-            console.log('useEffect episodios');
-
-        }
-
+        recuperarDetalles();
+        recuperarEpisodios();
     }, []);
 
     function recuperarDetalles() {
@@ -56,11 +47,12 @@ function DetallesAnime() {
 
 
 
-    if (!dataIsLoaded || !episodedDataIsLoaded) return <div>
-        <h1> Pleses wait some time.... </h1> </div>;
+
         
     return (
-        <div className="grid-container">
+        <Container>
+            {entrada && (
+                <div className="grid-container">
             <div className="item1">
                 <img src={entrada.data.images.jpg.large_image_url} alt="hola" />
                 <h3>{entrada.data.title}</h3>
@@ -81,7 +73,8 @@ function DetallesAnime() {
                 <h2>Sinopsis<hr /></h2>
                 <p>{entrada.data.synopsis}</p>
             </div>
-            <div className="item3">            
+            {episodios && (
+                <div className="item3">            
                 <table>
                     <thead>
                         <tr>
@@ -102,7 +95,13 @@ function DetallesAnime() {
 
                 </table>
             </div >
+            )}
+
+
+            
         </div >
+            )}
+        </Container>
     );
 }
 

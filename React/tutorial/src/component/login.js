@@ -20,39 +20,22 @@ import {
     Link,
     useParams
 } from 'react-router-dom';
-import { EventosComponente } from './EventosComponente';
-import { SegundoComponente } from './SegundoComponente';
-import { TercerComponente } from './TercerComponente';
+import AjaxComponent from './componentes-tutorial/AjaxComponent';
+import { Ejercicio1 } from './componentes-tutorial/Ejercicio1';
+import { EventosComponente } from './componentes-tutorial/EventosComponente';
+import { MiPrimerEstado } from './componentes-tutorial/MiPrimerEstado';
+import { PruebasComponent } from './componentes-tutorial/PruebasComponent';
+import { SegundoComponente } from './componentes-tutorial/SegundoComponente';
+import { TercerComponente } from './componentes-tutorial/TercerComponente';
 
 const Login = () => {
-
-    let numerito = 1;
-    let usuario = {
-        nombre: "Jose",
-        apellidos: "Hernandez",
-        web: "josesito.com"
-    };
-
-    const ficha_medica = {
-        altura: "187cm",
-        grupo: "O",
-        estado: "bueno", 
-        alergias: "bueno"
-    };
     return (
         <Container>
-        <p>Nombre: {usuario.nombre + " " + usuario.apellidos}</p>
-        <p>Web: {usuario.apellidos}</p>
         <hr/>
-        <SegundoComponente />
+        <PruebasComponent />
+        <hr />
+        <AjaxComponent />
         <hr/>
-        <TercerComponente 
-        ficha_medica={ficha_medica} 
-        nombre="Paco" 
-        apellido="Gomez" />
-        <hr />
-        <EventosComponente />
-        <hr />
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

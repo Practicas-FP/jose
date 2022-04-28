@@ -28,6 +28,7 @@ import { CardGroup } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import DetallesAnime from './component/detalles-anime';
+import { App } from './App';
 
 
 function Square(props) {
@@ -259,34 +260,8 @@ function calculateWinner(squares) {
   return null;
 }
 
-class Parent extends React.Component {
-  state = { message: "" }
-  callbackFunction = (childData) => {
-    this.setState({ message: childData })
-  };
 
 
-  render() {
-    return (
-      <div>
-        <Child1 parentCallback={this.callbackFunction} />
-        <p> {this.state.message} </p>
-      </div>
-    );
-  }
-}
-
-class Child1 extends React.Component {
-  sendData = () => {
-    this.props.parentCallback("Hey Popsie, How’s it going?");
-  };
-
-  render() {
-    return (
-      <button onClick={() => this.sendData()}>Data exchange</button>
-    );
-  }
-};
 
 // ========================================
 const rootElement = document.getElementById('root');
@@ -294,6 +269,6 @@ const root = createRoot(rootElement);
 
 root.render(
   
-    <ApiTest />
+    <App />
   
 );
