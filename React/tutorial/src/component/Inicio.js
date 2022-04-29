@@ -44,10 +44,6 @@ const Inicio = () => {
             });
     };
 
-    const buscarAnimes = (searchName) => {
-        setSearchName(searchName);
-    };
-
     const handleStatusSelectChange = (event) => {
         setStatus(event.target.value);
     };
@@ -69,7 +65,7 @@ const Inicio = () => {
     };
 
     const avanzarUltimaPagina = () => {
-        if (currentPage != lastPage) {
+        if (currentPage !== lastPage) {
             setCurrentPage(lastPage);
         }
     };

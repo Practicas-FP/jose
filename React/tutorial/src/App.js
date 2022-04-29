@@ -5,6 +5,7 @@ import About from './component/about';
 import DetallesAnime from './component/detalles-anime';
 import Contact from './component/contact';
 import Login from './component/login';
+import Reset from "./component/Reset"
 import { NavigationBar } from './component/NavigationBar';
 
 import {
@@ -14,6 +15,9 @@ import {
     Link
   } from 'react-router-dom';
 import Inicio from './component/Inicio';
+import Dashboard from './component/Dashboard';
+import Register from './component/Register';
+import Favoritos from './component/Favoritos';
 
 export const App = () => {
     return (
@@ -27,6 +31,11 @@ export const App = () => {
                     <Route exact path='/contact' element={< Contact />}></Route>
                     <Route exact path='/anime/:id' element={< DetallesAnime />}></Route>
                     <Route exact path='/login' element={< Login />}></Route>
+                    <Route exact path='/dashboard' element={< Dashboard />}></Route>
+                    <Route exact path='/reset' element={< Reset />}></Route>
+                    <Route exact path='/register' element={< Register />}></Route>
+                    <Route exact path='/favoritos' element={< Favoritos />}></Route>
+                    
                 </Routes>
             </Router>
         </Container>
