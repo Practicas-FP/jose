@@ -19,7 +19,7 @@ import {
     Route,
     Link,
     useParams,
-    useNavigate 
+    useNavigate
 } from 'react-router-dom';
 import AjaxComponent from './componentes-tutorial/AjaxComponent';
 import { Ejercicio1 } from './componentes-tutorial/Ejercicio1';
@@ -52,29 +52,29 @@ const Login = () => {
                     className="login__textBox"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="E-mail Address"
+                    placeholder="Correo electrónico"
                 />
                 <input
                     type="password"
                     className="login__textBox"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
+                    placeholder="Contraseña"
                 />
                 <button
                     className="login__btn"
                     onClick={() => signInWithEmailAndPassword(email, password)}
                 >
-                    Login
+                    Iniciar sesión
                 </button>
                 <button className="login__btn login__google" onClick={signInWithGoogle}>
-                    Login with Google
+                    Iniciar sesión con google
                 </button>
                 <div>
-                    <Link to="/reset">Forgot Password</Link>
+                    <Link to="/reset">Olvidé mi contraseña</Link>
                 </div>
                 <div>
-                    Don't have an account? <Link to="/register">Register</Link> now.
+                    ¿No tienes cuenta? <Link to="/register">Registrate</Link> ahora.
                 </div>
             </div>
         </div>

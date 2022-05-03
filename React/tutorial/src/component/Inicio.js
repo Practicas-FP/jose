@@ -83,7 +83,7 @@ const Inicio = () => {
     return (
         <Container>
             <Form className="d-flex" onSubmit={hacerBusqueda}>
-                <Row xs={1} sm={2} md={3} className="g-4">
+                <Row xs={1} sm={2} md={4} className="g-4">
                     <Col>
                         <FormControl
                             type="search"
@@ -92,6 +92,8 @@ const Inicio = () => {
                             aria-label="Search"
                             onChange={getInputValue}
                         />
+                    </Col>
+                    <Col>
                         <Button variant="outline-success" onClick={hacerBusqueda}>
                             Buscar
                         </Button>
@@ -129,8 +131,8 @@ const Inicio = () => {
             )}
             {!items.data && (
                 <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
             )}
 
             <Container>

@@ -27,11 +27,11 @@ function Dashboard() {
     return (
         <div className="dashboard">
             <div className="dashboard__container">
-                Logged in as
+                Se ha iniciado sesión como
                 <div>{name}</div>
                 <div>{user?.email}</div>
                 <button className="dashboard__btn" onClick={logout}>
-                    Logout
+                    Cerrar sesión
                 </button>
             </div>
         </div>
