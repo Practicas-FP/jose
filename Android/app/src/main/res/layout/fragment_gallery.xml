@@ -6,6 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".ui.gallery.GalleryFragment">
 
+    <RadioGroup
+        android:id="@+id/radioGroupEstadoEmision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <RadioButton
+            android:id="@+id/radioButtonEstadoEmisionCualquiera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Cualquiera" />
+
+        <RadioButton
+            android:id="@+id/radioButtonEstadoEmisionEnEmision"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="En emisión" />
+
+        <RadioButton
+            android:id="@+id/radioButtonEstadoEmisionEmitido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Emitido" />
+
+        <RadioButton
+            android:id="@+id/radioButtonEstadoEmisionPorEmitir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Por emitir" />
+    </RadioGroup>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAnimes"
         android:layout_width="0dp"
@@ -13,7 +49,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupTipo" />
 
     <SearchView
         android:id="@+id/searchView"
@@ -22,4 +58,69 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <RadioButton
+
+            android:id="@+id/radioButtonTipoCualquiera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Cualquiera" />
+
+        <RadioButton
+
+            android:id="@+id/radioButtonTipoTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TV" />
+
+        <RadioButton
+
+            android:id="@+id/radioButtonTipoPelicula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Película" />
+
+        <RadioButton
+
+            android:id="@+id/radioButtonTipoOVA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="OVA" />
+
+        <RadioButton
+            android:id="@+id/radioButtonTipoEspecial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Especial" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Estado de emisión"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo de anime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupEstadoEmision" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

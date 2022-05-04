@@ -1,9 +1,12 @@
 package com.example.buscadoranime.ui.gallery
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -44,6 +47,15 @@ class GalleryFragment : Fragment(), SearchView.OnQueryTextListener,
         binding.searchView.setOnQueryTextListener(this)
         initRecyclerView()
 
+        binding.radioGroupEstadoEmision.setOnCheckedChangeListener(
+            RadioGroup.OnCheckedChangeListener { group, checkedId ->
+                searchByName("")
+            })
+
+        binding.radioGroupTipo.setOnCheckedChangeListener(
+            RadioGroup.OnCheckedChangeListener { group, checkedId ->
+                searchByName("")
+            })
 
         galleryViewModel.text.observe(viewLifecycleOwner) {
 
@@ -51,9 +63,20 @@ class GalleryFragment : Fragment(), SearchView.OnQueryTextListener,
         return root
     }
 
+
     private fun initRecyclerView() {
         adapter = AnimeAdapter(listadoAnimes, requireContext())
+        adapter.setOnItemClickListener(object : AnimeAdapter.onItemClickListener{
+            override fun onItemClick(anime: Data) {
+                startActivity(Intent(requireContext(), DetallesAnimeActivity::class.java)
+                    .putExtra("anime.mal_id", anime.mal_id)
+                    .putExtra("anime.title", anime.title)
+                    .putExtra("anime.images.jpg.image_url", anime.images.jpg.image_url)
+                    .putExtra("anime.synopsis", anime.synopsis.toString()))
+            }
+        })
         binding.rvAnimes.layoutManager = LinearLayoutManager(requireContext())
+
         binding.rvAnimes.adapter = adapter
     }
 
@@ -71,7 +94,7 @@ class GalleryFragment : Fragment(), SearchView.OnQueryTextListener,
 
     private fun searchByName(query: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = getRetrofit().create(ApiService::class.java).getAnimesByName("anime?q=${query}&status=&type=&limit=3&sfw&order_by=score&sort=desc")
+            val call = getRetrofit().create(ApiService::class.java).getAnimesByName("anime?q=${query}&status=${devolverEstadoEmision()}&type=${devolverTipoAnime()}&limit=3&sfw&order_by=score&sort=desc")
             val animes = call.body()
 
             requireActivity().runOnUiThread {
@@ -92,12 +115,33 @@ class GalleryFragment : Fragment(), SearchView.OnQueryTextListener,
         }
     }
 
+    private fun devolverEstadoEmision(): String {
+        when(binding.radioGroupEstadoEmision.checkedRadioButtonId){
+            binding.radioButtonEstadoEmisionCualquiera.id -> return ""
+            binding.radioButtonEstadoEmisionEmitido.id -> return "complete"
+            binding.radioButtonEstadoEmisionEnEmision.id -> return "airing"
+            binding.radioButtonEstadoEmisionPorEmitir.id -> return "upcoming"
+        }
+        return ""
+    }
+
+    private fun devolverTipoAnime(): String {
+        when(binding.radioGroupTipo.checkedRadioButtonId){
+            binding.radioButtonTipoCualquiera.id -> return ""
+            binding.radioButtonTipoTV.id -> return "tv"
+            binding.radioButtonTipoPelicula.id -> return "movie"
+            binding.radioButtonTipoOVA.id -> return "ova"
+            binding.radioButtonTipoEspecial.id -> return "special"
+        }
+        return ""
+    }
+
     private fun showError() {
         Toast.makeText(requireContext(), "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        if(!query.isNullOrEmpty()){
+        if(!query.isNullOrBlank()){
             searchByName(query.lowercase())
         }
         return true
