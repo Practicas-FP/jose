@@ -52,7 +52,7 @@ class GalleryFragment : Fragment(), SearchView.OnQueryTextListener,
     }
 
     private fun initRecyclerView() {
-        adapter = AnimeAdapter(listadoAnimes)
+        adapter = AnimeAdapter(listadoAnimes, requireContext())
         binding.rvAnimes.layoutManager = LinearLayoutManager(requireContext())
         binding.rvAnimes.adapter = adapter
     }
