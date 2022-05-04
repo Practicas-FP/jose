@@ -10,8 +10,7 @@ class AnimeViewHolder(view: View):RecyclerView.ViewHolder(view) {
     private val binding = AnimeCardBinding.bind(view)
     fun bind(anime: Data){
         Picasso.get().load(anime.images.jpg.image_url).into(binding.imageViewPortadaAnime)
-        binding.textViewTituloAnime.setText(anime.title_english.toString())
-
+        binding.textViewTituloAnime.text = anime.title.toString()
     }
 
 }

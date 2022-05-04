@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,11 +18,12 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class GalleryFragment : Fragment() {
+class GalleryFragment : Fragment(), SearchView.OnQueryTextListener,
+    android.widget.SearchView.OnQueryTextListener {
 
     private var _binding: FragmentGalleryBinding? = null
     private lateinit var adapter: AnimeAdapter
-    private val animeImages = mutableListOf<Data>()
+    private val listadoAnimes = mutableListOf<Data>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -40,6 +41,9 @@ class GalleryFragment : Fragment() {
         val root: View = binding.root
 
         searchByName("")
+        binding.searchView.setOnQueryTextListener(this)
+        initRecyclerView()
+
 
         galleryViewModel.text.observe(viewLifecycleOwner) {
 
@@ -48,8 +52,9 @@ class GalleryFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        adapter = AnimeAdapter(animeImages)
+        adapter = AnimeAdapter(listadoAnimes)
         binding.rvAnimes.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvAnimes.adapter = adapter
     }
 
     override fun onDestroyView() {
@@ -66,24 +71,22 @@ class GalleryFragment : Fragment() {
 
     private fun searchByName(query: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = getRetrofit().create(ApiService::class.java).getAnimesByName("anime?q=&status=&type=&limit=3&sfw&order_by=score&sort=desc")
+            val call = getRetrofit().create(ApiService::class.java).getAnimesByName("anime?q=${query}&status=&type=&limit=3&sfw&order_by=score&sort=desc")
             val animes = call.body()
 
             requireActivity().runOnUiThread {
                 if(call.isSuccessful){
-                    val images = animes?.data ?: emptyList()
-                    Toast.makeText(requireContext(), animes?.data?.get(0)?.title_english.toString(), Toast.LENGTH_SHORT).show()
-                    val text = ""
-                    for(i in 0.. animes!!.data!!.size -1)
-                    {
-                        println(animes.data.get(i).title)
-                    }
+                    val entradas = animes?.data ?: emptyList()
+                    listadoAnimes.clear()
+                    listadoAnimes.addAll(entradas)
+                    adapter.notifyDataSetChanged()
+
                     //animeImages.clear()
                     //animeImages.addAll(images)
                     //adapter.notifyDataSetChanged()
                 }
                 else{
-                    //showError
+                    showError()
                 }
             }
         }
@@ -91,5 +94,16 @@ class GalleryFragment : Fragment() {
 
     private fun showError() {
         Toast.makeText(requireContext(), "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if(!query.isNullOrEmpty()){
+            searchByName(query.lowercase())
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
     }
 }
