@@ -16,5 +16,13 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/car_ui_icon_lock"
+            android:title="@string/inicio_sesi_n" />
+        <item
+            android:id="@+id/nav_favgallery"
+            android:icon="@android:drawable/btn_star_big_on"
+            android:title="Favoritos" />
     </group>
 </menu>

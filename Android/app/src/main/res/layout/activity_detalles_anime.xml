@@ -37,5 +37,15 @@
         android:text="Sinopsis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGuardarFavorito" />
+
+    <Button
+        android:id="@+id/buttonGuardarFavorito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Guardar favorito"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPortadaAnimeDetalles" />
 </androidx.constraintlayout.widget.ConstraintLayout>

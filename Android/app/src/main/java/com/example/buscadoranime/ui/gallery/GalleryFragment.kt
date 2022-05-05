@@ -31,6 +31,7 @@ class GalleryFragment : Fragment(), SearchView.OnQueryTextListener,
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -47,15 +48,13 @@ class GalleryFragment : Fragment(), SearchView.OnQueryTextListener,
         binding.searchView.setOnQueryTextListener(this)
         initRecyclerView()
 
-        binding.radioGroupEstadoEmision.setOnCheckedChangeListener(
-            RadioGroup.OnCheckedChangeListener { group, checkedId ->
-                searchByName("")
-            })
+        binding.radioGroupEstadoEmision.setOnCheckedChangeListener { group, checkedId ->
+            searchByName("")
+        }
 
-        binding.radioGroupTipo.setOnCheckedChangeListener(
-            RadioGroup.OnCheckedChangeListener { group, checkedId ->
-                searchByName("")
-            })
+        binding.radioGroupTipo.setOnCheckedChangeListener { group, checkedId ->
+            searchByName("")
+        }
 
         galleryViewModel.text.observe(viewLifecycleOwner) {
 

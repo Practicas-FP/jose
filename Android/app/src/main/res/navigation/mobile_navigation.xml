@@ -22,4 +22,14 @@
         android:name="com.example.buscadoranime.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.buscadoranime.ui.login.LoginFragment"
+        android:label="Inicio de sesión"
+        tools:layout="@layout/login_fragment" />
+    <fragment
+        android:id="@+id/nav_favgallery"
+        android:name="com.example.buscadoranime.ui.favGallery.FavGalleryFragment"
+        android:label="fav_gallery_fragment"
+        tools:layout="@layout/fav_gallery_fragment" />
 </navigation>
