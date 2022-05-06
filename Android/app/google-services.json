@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "837471827346",
+    "firebase_url": "https://poetic-ceremony-345507-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "poetic-ceremony-345507",
+    "storage_bucket": "poetic-ceremony-345507.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837471827346:android:6c96785e40ba6b15fe7d4b",
+        "android_client_info": {
+          "package_name": "com.example.buscadoranime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837471827346-03585u63qjem493f3fcgsf6lnit3qqdo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8jaPF_w3ysDqEavetUOYcVxVHw3EnqrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837471827346-03585u63qjem493f3fcgsf6lnit3qqdo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

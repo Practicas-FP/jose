@@ -29,7 +29,7 @@ class FavGalleryFragment : Fragment() {
 
     private lateinit var adapter: AnimesFavoritosAdapter
     private var _binding: FavGalleryFragmentBinding? = null
-    private lateinit var listadoAnimes: List<AnimeEntity>
+    private var listadoAnimes: List<AnimeEntity> = mutableListOf()
     private lateinit var viewModel: FavGalleryViewModel
 
     private val binding get() = _binding!!
@@ -86,7 +86,6 @@ class FavGalleryFragment : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             listadoAnimes = db.getAnimeDao().getALLAnimes()
             db.close()
-
 
         }
     }

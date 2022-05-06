@@ -33,4 +33,18 @@ class AnimesFavoritosAdapter(val animes: List<AnimeEntity>) : RecyclerView.Adapt
     override fun getItemCount(): Int {
         return animes.size;
     }
+
+/*    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimesFavoritosViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return AnimesFavoritosViewHolder(layoutInflater.inflate(R.layout.anime_card, parent, false))
+    }
+
+    override fun onBindViewHolder(holder: AnimesFavoritosViewHolder, position: Int) {
+        val item = animes[position]
+        holder.bind(item, mListener)
+    }
+
+    override fun getItemCount(): Int {
+        return animes.size;
+    }*/
 }
