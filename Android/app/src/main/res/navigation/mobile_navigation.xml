@@ -24,9 +24,9 @@
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/nav_login"
-        android:name="com.example.buscadoranime.ui.login.LoginFragment"
+        android:name="com.example.buscadoranime.ui.login.LogFragment"
         android:label="Inicio de sesión"
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/fragment_log" />
     <fragment
         android:id="@+id/nav_favgallery"
         android:name="com.example.buscadoranime.ui.favGallery.FavGalleryFragment"

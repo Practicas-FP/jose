@@ -27,9 +27,9 @@ class FavGalleryFragment : Fragment() {
         fun newInstance() = FavGalleryFragment()
     }
 
-    private lateinit var adapter: AnimesFavoritosAdapter
+    private lateinit var adapter: FavAnimeAdapter
     private var _binding: FavGalleryFragmentBinding? = null
-    private var listadoAnimes: List<AnimeEntity> = mutableListOf()
+    private var listadoAnimes = mutableListOf<AnimeEntity>()
     private lateinit var viewModel: FavGalleryViewModel
 
     private val binding get() = _binding!!
@@ -42,27 +42,23 @@ class FavGalleryFragment : Fragment() {
         _binding = FavGalleryFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        loadFavoritosRoom()
-        initRecyclerView()
 
 
 
-
-        return inflater.inflate(R.layout.fav_gallery_fragment, container, false)
+        return root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(FavGalleryViewModel::class.java)
-        // TODO: Use the ViewModel
 
-
+        initRecyclerView()
+        loadFavoritosRoom()
     }
 
     private fun initRecyclerView() {
-        adapter = AnimesFavoritosAdapter(listadoAnimes)
-        adapter.setOnItemClickListener(object : AnimesFavoritosAdapter.onItemClickListener{
-
+        adapter = FavAnimeAdapter(listadoAnimes)
+        adapter.setOnItemClickListener(object : FavAnimeAdapter.onItemClickListener{
             override fun onItemClick(anime: AnimeEntity) {
                 startActivity(
                     Intent(requireContext(), DetallesAnimeActivity::class.java)
@@ -73,7 +69,6 @@ class FavGalleryFragment : Fragment() {
             }
         })
         binding.rvAnimesFavoritos.layoutManager = LinearLayoutManager(requireContext())
-
         binding.rvAnimesFavoritos.adapter = adapter
     }
 
@@ -84,10 +79,14 @@ class FavGalleryFragment : Fragment() {
         ).build()
 
         CoroutineScope(Dispatchers.IO).launch {
-            listadoAnimes = db.getAnimeDao().getALLAnimes()
+            listadoAnimes.addAll(db.getAnimeDao().getALLAnimes())
             db.close()
 
+
+            adapter.notifyDataSetChanged()
+
         }
+        println()
     }
 
 }
