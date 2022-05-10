@@ -47,6 +47,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
     kapt "androidx.room:room-compiler:2.4.2"
     implementation platform('com.google.firebase:firebase-bom:29.3.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'

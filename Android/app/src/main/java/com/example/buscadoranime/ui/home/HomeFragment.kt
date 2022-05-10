@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.buscadoranime.FirebaseManager
+import com.example.buscadoranime.data.database.entities.AnimeEntity
 import com.example.buscadoranime.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -32,6 +34,7 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
         return root
     }
 

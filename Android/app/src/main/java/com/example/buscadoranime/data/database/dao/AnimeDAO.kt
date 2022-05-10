@@ -1,9 +1,6 @@
 package com.example.buscadoranime.data.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.buscadoranime.data.database.entities.AnimeEntity
 
 @Dao
@@ -15,5 +12,11 @@ interface AnimeDAO {
     suspend fun insertAll(animes:List<AnimeEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(animes:AnimeEntity)
+    fun insert(anime:AnimeEntity)
+
+    @Delete
+    fun deleteAll(anime: AnimeEntity)
+
+    @Query("DELETE FROM anime_table WHERE mal_id = :animeID")
+    fun deleteByAnimeId(animeID: Int)
 }

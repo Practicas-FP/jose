@@ -214,6 +214,12 @@ class LogFragment : Fragment() {
     // [END signin]
 
     private fun updateUI(user: FirebaseUser?) {
+        binding.buttonLogGoogle.visibility = View.INVISIBLE
+        binding.buttonLogOutGoogle.visibility = View.VISIBLE
+        binding.imageViewFotoUusuario.visibility = View.VISIBLE
+        binding.textViewNombreUsuario.visibility = View.VISIBLE
+        binding.textViewCorreoElectronico.visibility = View.VISIBLE
+
         binding.textViewNombreUsuario.text = auth.currentUser?.displayName
         binding.textViewCorreoElectronico.text = auth.currentUser?.email
         Picasso.get().load(auth.currentUser?.photoUrl).into(binding.imageViewFotoUusuario)
