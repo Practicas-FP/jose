@@ -1,3 +1,4 @@
+import 'package:buscador_anime/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 import 'package:http/http.dart' as http;
@@ -14,9 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Center(
-          child: Text("Hola mundo")
-      )
+      home: HomeScreen()
     );
   }
 
