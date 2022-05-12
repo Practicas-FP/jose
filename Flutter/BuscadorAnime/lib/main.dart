@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-void main() {
+
+void main(){
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: Center(
+          child: Text("Hola mundo")
+      )
+    );
+  }
+
+}
+
+/*void main() {
   runApp(MyApp());
 }
 
@@ -32,9 +53,17 @@ class _MyHomePageState extends State<MyHomePage> {
       "GREY",
     ];
 
+    //Future<List<Map<String, dynamic>>> animes = recuperarAnimes();
     List<Map<String, dynamic>> animes = devolverDatos();
     List<String> listaTitulos = devolverTitulos(animes);
     List<Widget> listaPortadas = devolverPortadas(animes);
+
+    recuperarAnimes().then((value) {
+      animes = value;
+      listaTitulos = devolverTitulos(animes);
+      listaPortadas = devolverPortadas(animes);
+      print(listaPortadas);
+    });
 
 
     final List<Widget> images = [
@@ -79,9 +108,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
+}*/
 
-List<String> devolverTitulos(List<Map<String, dynamic>> lista){
+List<String> devolverTitulos(List<Map<String, dynamic>> lista) {
   List<String> listaTitulos = [];
   lista.forEach((element) {
     listaTitulos.add(element["title"]);
@@ -89,7 +118,7 @@ List<String> devolverTitulos(List<Map<String, dynamic>> lista){
   return listaTitulos;
 }
 
-List<Widget> devolverPortadas(List<Map<String, dynamic>> lista){
+List<Widget> devolverPortadas(List<Map<String, dynamic>> lista) {
   List<Widget> listaPortadas = [];
   lista.forEach((element) {
     listaPortadas.add(ClipRRect(
@@ -103,19 +132,77 @@ List<Widget> devolverPortadas(List<Map<String, dynamic>> lista){
   return listaPortadas;
 }
 
-void funcionParametrosOpcionales({String? saludo, String? nombre}){
+
+
+void funcionParametrosOpcionales({String? saludo, String? nombre}) {
   print("$saludo $nombre");
 }
 
-void funcionParametrosOpcionales2({String saludo = "hola", String? nombre}){
+void funcionParametrosOpcionales2({String saludo = "hola", String? nombre}) {
   print("$saludo $nombre");
 }
 
-void funcionParametrosOpcionales3(String saludo, [String? nombre]){
+void funcionParametrosOpcionales3(String saludo, [String? nombre]) {
   print("$saludo $nombre");
 }
 
-List<Map<String, dynamic>> devolverDatos(){
+Future<List<Map<String, dynamic>>> recuperarAnimes() async {
+  final response = await http.get(Uri.parse
+    ('https://api.jikan.moe/v4/anime?q=&status=&type=&'
+      'limit=3&sfw&order_by=score&sort=desc&page=1'));
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    print(jsonDecode(response.body)["data"]);
+    return jsonDecode(response.body)["data"];
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load album');
+  }
+
+}
+
+class Heroe {
+  String nombre;
+  String poder;
+
+  Heroe({
+    required this.nombre,
+    required this.poder
+  });
+
+  Heroe.fromJson(Map<String, String> json)
+      :
+        nombre = json['nombre' ]!,
+        poder = json['poder'] ?? 'No tiene poder';
+
+/*  Heroe.fromJson2( Map<String, String> json){
+    this.nombre = json['nombre' ]?? "Nombre";
+    this.poder = json['poder'] ?? 'No tiene poder';
+  }*/
+
+  String toString() {
+    Cuadrado(5).area;
+    return 'Heroe: nombre: ${(nombre)}, poder: ${(poder)}';
+  }
+}
+
+class Cuadrado {
+  double lado = 0;
+
+  double get area {
+    return lado * lado;
+  }
+
+/*  Cuadrado(double lado){
+    this.lado = lado;
+  }*/
+  Cuadrado(this.lado);
+
+}
+
+List<Map<String, dynamic>> devolverDatos() {
   return [
     {
       "mal_id": 38524,
