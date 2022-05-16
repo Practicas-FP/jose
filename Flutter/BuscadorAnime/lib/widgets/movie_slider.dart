@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../models/anime_response.dart';
+
 class MovieSlider extends StatelessWidget {
-  const MovieSlider({Key? key}) : super(key: key);
+  final List<Data> listadoAnimes;
+
+  const MovieSlider({Key? key, required this.listadoAnimes}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +23,8 @@ class MovieSlider extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) => _MoviePoster(),
+              itemCount: listadoAnimes.length,
+              itemBuilder: (BuildContext context, int index) => _MoviePoster(anime: listadoAnimes[index],),
             ),
           )
         ],
@@ -30,8 +34,9 @@ class MovieSlider extends StatelessWidget {
 }
 
 class _MoviePoster extends StatelessWidget {
+  final Data anime;
   const _MoviePoster({
-    Key? key,
+    Key? key, required this.anime,
   }) : super(key: key);
 
   @override
@@ -47,21 +52,21 @@ class _MoviePoster extends StatelessWidget {
               Navigator.pushNamed(
                   context,
                   'details',
-                  arguments: 'detallesAnime'
+                  arguments: anime
               );
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(50),
               child: FadeInImage(
                   placeholder: AssetImage('assets/no-image.jpg'),
-                  image: NetworkImage('https://via.placeholder.com/300x400'),
+                  image: NetworkImage(anime.images.jpg.imageUrl),
                   width: 130,
                   height: 190,
                   fit: BoxFit.cover),
             ),
           ),
           Text(
-            "Paquitooooooooooooooooooo",
+            anime.title,
             overflow: TextOverflow.ellipsis,
           )
       ],

@@ -1,6 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:buscador_anime/providers/anime_provider.dart';
+import 'package:buscador_anime/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/anime_response.dart';
 
 class DetailsScreen extends StatelessWidget {
   //TODO: Cambiar después por una instancia de anime
@@ -8,17 +13,23 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String anime =
-        ModalRoute.of(context)?.settings.arguments.toString() ?? 'no-anime';
+    final Data anime =
+        ModalRoute.of(context)?.settings.arguments as Data;
+    final animeProvider = Provider.of<AnimesProvider>(context);
+    animeProvider.getOnDisplayCharacters(anime.malId.toInt());
+    print(animeProvider.listaPersonajes);
+
 
     return Scaffold(
       // Body: custom scroll view
       body: CustomScrollView(
         slivers: [
-          _CustomAppBar(),
+          _CustomAppBar(anime: anime,),
           SliverList(
               delegate: SliverChildListDelegate([
-                _PosterAndTitle(),
+                _PosterAndTitle(anime: anime,),
+                _Overview(anime: anime,),
+                CastingCards(listaPersonajes: animeProvider.listaPersonajes),
 
               ]
               )
@@ -30,7 +41,8 @@ class DetailsScreen extends StatelessWidget {
 }
 
 class _CustomAppBar extends StatelessWidget {
-  const _CustomAppBar({Key? key}) : super(key: key);
+  final Data anime;
+  const _CustomAppBar({Key? key, required this.anime}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +58,11 @@ class _CustomAppBar extends StatelessWidget {
           width: double.infinity,
           alignment: Alignment.bottomCenter,
           color: Colors.black12,
-          child: Text('movie.title', style: TextStyle(fontSize: 16),),
+          child: Text(anime.title, style: TextStyle(fontSize: 16),),
         ),
         background: FadeInImage(
             placeholder: AssetImage('assets/loading.gif'),
-            image: NetworkImage('https://via.placeholder.com/300x400'),
+            image: NetworkImage(anime.images.jpg.imageUrl),
             fit: BoxFit.cover),
       ),
     );
@@ -58,7 +70,8 @@ class _CustomAppBar extends StatelessWidget {
 }
 
 class _PosterAndTitle extends StatelessWidget {
-  const _PosterAndTitle({Key? key}) : super(key: key);
+  final Data anime;
+  const _PosterAndTitle({Key? key, required this.anime}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +84,7 @@ class _PosterAndTitle extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: FadeInImage(
               placeholder: AssetImage('assets/no-image.jpg'),
-              image: NetworkImage('https://via.placeholder.com/200x300'),
+              image: NetworkImage(anime.images.jpg.imageUrl),
               height: 150,
             ),
           ),
@@ -79,11 +92,11 @@ class _PosterAndTitle extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("movie.title",
+              Text(anime.title,
                   style: buildTextTheme(context).headline5,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,),
-              Text("movie.originalTitle",
+              Text(anime.titleJapanese,
                 style: buildTextTheme(context).subtitle1,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,),
@@ -98,7 +111,7 @@ class _PosterAndTitle extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                      'movie.voteAverage',
+                      anime.score.toString(),
                       style: buildTextTheme(context).caption,
                   ),
                 ],
@@ -110,5 +123,22 @@ class _PosterAndTitle extends StatelessWidget {
     );
   }
 
-  TextTheme buildTextTheme(BuildContext context) => Theme.of(context).textTheme;
 }
+TextTheme buildTextTheme(BuildContext context) => Theme.of(context).textTheme;
+
+class _Overview extends StatelessWidget {
+  final Data anime;
+  const _Overview({Key? key, required this.anime}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child: Text(anime.synopsis,
+        textAlign: TextAlign.justify,
+        style: buildTextTheme(context).subtitle1,
+      ),
+    );
+  }
+}
+
