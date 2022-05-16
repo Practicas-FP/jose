@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 import 'package:http/http.dart' as http;
 
+import 'drawer_anime.dart';
+
 class HomeScreenStatefull extends StatefulWidget {
   const HomeScreenStatefull({Key? key}) : super(key: key);
 
@@ -20,7 +22,8 @@ class _HomeScreenStatefullState extends State<HomeScreenStatefull> {
       appBar: AppBar(
         title: Center(child: const Text('HomeScreenStatefull')),
         elevation: 15,
-      ), // AppBar
+      ),
+      drawer: DrawerAnime(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
