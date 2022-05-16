@@ -13,27 +13,25 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Data anime =
-        ModalRoute.of(context)?.settings.arguments as Data;
-    final animeProvider = Provider.of<AnimesProvider>(context);
-    animeProvider.getOnDisplayCharacters(anime.malId.toInt());
-    print(animeProvider.listaPersonajes);
-
+    final Data anime = ModalRoute.of(context)?.settings.arguments as Data;
 
     return Scaffold(
       // Body: custom scroll view
       body: CustomScrollView(
         slivers: [
-          _CustomAppBar(anime: anime,),
+          _CustomAppBar(
+            anime: anime,
+          ),
           SliverList(
               delegate: SliverChildListDelegate([
-                _PosterAndTitle(anime: anime,),
-                _Overview(anime: anime,),
-                CastingCards(listaPersonajes: animeProvider.listaPersonajes),
-
-              ]
-              )
-          ),
+            _PosterAndTitle(
+              anime: anime,
+            ),
+            _Overview(
+              anime: anime,
+            ),
+            CastingCards(),
+          ])),
         ],
       ),
     );
@@ -58,7 +56,10 @@ class _CustomAppBar extends StatelessWidget {
           width: double.infinity,
           alignment: Alignment.bottomCenter,
           color: Colors.black12,
-          child: Text(anime.title, style: TextStyle(fontSize: 16),),
+          child: Text(
+            anime.title,
+            style: TextStyle(fontSize: 16),
+          ),
         ),
         background: FadeInImage(
             placeholder: AssetImage('assets/loading.gif'),
@@ -92,27 +93,31 @@ class _PosterAndTitle extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(anime.title,
-                  style: buildTextTheme(context).headline5,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,),
-              Text(anime.titleJapanese,
+              Text(
+                anime.title,
+                style: buildTextTheme(context).headline5,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
+              Text(
+                anime.titleJapanese,
                 style: buildTextTheme(context).subtitle1,
                 overflow: TextOverflow.ellipsis,
-                maxLines: 2,),
+                maxLines: 2,
+              ),
               Row(
                 children: [
                   Icon(
-                      Icons.star_outlined,
-                  size: 15,
-                  color: Colors.grey,
+                    Icons.star_outlined,
+                    size: 15,
+                    color: Colors.grey,
                   ),
                   SizedBox(
                     width: 5,
                   ),
                   Text(
-                      anime.score.toString(),
-                      style: buildTextTheme(context).caption,
+                    anime.score.toString(),
+                    style: buildTextTheme(context).caption,
                   ),
                 ],
               )
@@ -122,8 +127,8 @@ class _PosterAndTitle extends StatelessWidget {
       ),
     );
   }
-
 }
+
 TextTheme buildTextTheme(BuildContext context) => Theme.of(context).textTheme;
 
 class _Overview extends StatelessWidget {
@@ -134,11 +139,11 @@ class _Overview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-      child: Text(anime.synopsis,
+      child: Text(
+        anime.synopsis,
         textAlign: TextAlign.justify,
         style: buildTextTheme(context).subtitle1,
       ),
     );
   }
 }
-

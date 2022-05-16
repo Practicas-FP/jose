@@ -46,18 +46,18 @@ class AnimesProvider extends ChangeNotifier {
 
   }
 
-  getOnDisplayCharacters(int animeid) async {
-    var url = Uri.https(_baseUrl, 'v4/anime/$animeid/characters', {
+  getOnDisplayCharacters() async {
+    var url = Uri.https(_baseUrl, 'v4/anime/5114/characters', {
 
     });
 
     // Await the http get response, then decode the json-formatted response.
     final response = await http.get(url);
+    print(response.body);
     CharactersResponse respuestaPersonajes = CharactersResponse.fromJson(json.decode(response.body));
     //
     listaPersonajes = respuestaPersonajes.data;
     notifyListeners();
-    print(respuestaPersonajes.data);
     print("holaaaa");
 
 

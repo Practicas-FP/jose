@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/characters_response.dart';
 
 class CastingCards extends StatelessWidget {
-  List<CharacterData> listaPersonajes = [];
-  CastingCards({Key? key, required this.listaPersonajes}) : super(key: key);
+  CastingCards({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +12,7 @@ class CastingCards extends StatelessWidget {
       width: double.infinity,
       height: 180,
       child: ListView.builder(
-          itemCount: listaPersonajes.length,
+          itemCount: 10,
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) => _CastCard()),
     );

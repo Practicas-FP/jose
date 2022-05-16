@@ -141,7 +141,6 @@ class HomeScreen2 extends StatelessWidget {
         title: const Text('HomeScreen'),
         elevation: 15,
       ),
-      drawer: DrawerAnime(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

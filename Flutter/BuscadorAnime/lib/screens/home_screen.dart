@@ -11,7 +11,8 @@ class HomeScreen extends StatelessWidget {
 
     final animeProvider = Provider.of<AnimesProvider>(context);
 
-    print(animeProvider.getOnDisplayAnimes);
+    print(animeProvider.listaPersonajes);
+
 
     return Scaffold(
       appBar: AppBar(
@@ -24,6 +25,7 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
+      drawer: DrawerMenu(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -37,3 +39,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
