@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:buscador_anime/models/characters_response.dart';
 import 'package:buscador_anime/providers/anime_provider.dart';
+import 'package:buscador_anime/providers/characters_anime_provider.dart';
 import 'package:buscador_anime/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +32,7 @@ class DetailsScreen extends StatelessWidget {
             _Overview(
               anime: anime,
             ),
-            CastingCards(),
+            CastingCards(listaPersonajes: Provider.of<AnimesProvider>(context).listaPersonajes),
           ])),
         ],
       ),
@@ -71,63 +73,63 @@ class _CustomAppBar extends StatelessWidget {
 }
 
 class _PosterAndTitle extends StatelessWidget {
+
   final Data anime;
-  const _PosterAndTitle({Key? key, required this.anime}) : super(key: key);
+
+  const _PosterAndTitle( {required this.anime} );
+
 
   @override
   Widget build(BuildContext context) {
+
+    final TextTheme textTheme = Theme.of(context).textTheme;
+    final size = MediaQuery.of(context).size;
+
     return Container(
-      margin: EdgeInsets.only(top: 20),
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      margin: EdgeInsets.only( top: 20 ),
+      padding: EdgeInsets.symmetric( horizontal: 20 ),
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: FadeInImage(
-              placeholder: AssetImage('assets/no-image.jpg'),
-              image: NetworkImage(anime.images.jpg.imageUrl),
-              height: 150,
+          Hero(
+            tag: anime.malId,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: FadeInImage(
+                placeholder: AssetImage('assets/no-image.jpg'),
+                image: NetworkImage( anime.images.jpg.imageUrl ),
+                height: 150,
+              ),
             ),
           ),
-          SizedBox(width: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                anime.title,
-                style: buildTextTheme(context).headline5,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-              ),
-              Text(
-                anime.titleJapanese,
-                style: buildTextTheme(context).subtitle1,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-              ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.star_outlined,
-                    size: 15,
-                    color: Colors.grey,
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    anime.score.toString(),
-                    style: buildTextTheme(context).caption,
-                  ),
-                ],
-              )
-            ],
+
+          SizedBox( width: 20 ),
+
+          ConstrainedBox(
+            constraints: BoxConstraints( maxWidth: size.width - 190 ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                Text( anime.title, style: textTheme.headline5, overflow: TextOverflow.ellipsis, maxLines: 2 ),
+
+                Text( anime.titleJapanese, style: textTheme.subtitle1, overflow: TextOverflow.ellipsis, maxLines: 2),
+
+                Row(
+                  children: [
+                    Icon( Icons.star_outline, size: 15, color: Colors.grey ),
+                    SizedBox( width: 5 ),
+                    Text( '${anime.score.toString()}', style: textTheme.caption )
+                  ],
+                )
+              ],
+            ),
           )
         ],
       ),
     );
   }
 }
+
 
 TextTheme buildTextTheme(BuildContext context) => Theme.of(context).textTheme;
 

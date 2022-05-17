@@ -11,8 +11,6 @@ class HomeScreen extends StatelessWidget {
 
     final animeProvider = Provider.of<AnimesProvider>(context);
 
-    print(animeProvider.listaPersonajes);
-
 
     return Scaffold(
       appBar: AppBar(
@@ -32,8 +30,10 @@ class HomeScreen extends StatelessWidget {
             //Tarjetas principales
             CardSwipper(listadoAnimes: animeProvider.listaAnimes),
             //Slider de películas
-            MovieSlider(listadoAnimes: animeProvider.listaAnimes,),
+            MovieSlider(tituloSlider: "Animes en emision", listadoAnimes: animeProvider.listaAnimesEmision, onNextPage: () => animeProvider.getOnAnimesEnEmision()),
+            MovieSlider(tituloSlider: "Películas de anime populares", listadoAnimes: animeProvider.listaPeliculasAnimePopulares, onNextPage: () => animeProvider.getOnPopularPeliculasAnimes()),
           ],
+
         ),
       ),
     );

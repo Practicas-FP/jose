@@ -1,4 +1,5 @@
 import 'package:buscador_anime/providers/anime_provider.dart';
+import 'package:buscador_anime/providers/characters_anime_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
@@ -18,7 +19,7 @@ class AppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => AnimesProvider(), lazy: false,)
+          ChangeNotifierProvider(create: (_) => AnimesProvider(), lazy: false,),
         ],
       child: MyApp(),
     );

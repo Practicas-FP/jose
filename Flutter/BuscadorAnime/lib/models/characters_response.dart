@@ -81,7 +81,9 @@ class Images {
 
   Images.fromJson(Map<String, dynamic> json) {
     jpg = Jpg.fromJson(json['jpg']);
-    webp = Webp.fromJson(json['webp']);
+    if(json['webp'] != null)
+      webp = Webp.fromJson(json['webp']);
+
   }
 
   Map<String, dynamic> toJson() {
