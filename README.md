@@ -16,6 +16,11 @@ Al clicar en una de las tarjetas, se abre una nueva actividad con los detalles d
 
 ![Esta es una imagen](/ImagenesDemo/Android/Android02.png) 
 
+En el fragmento de login, se permite iniciar sesión desde la API de Google. Si se inicia con éxito, se muestran los datos del usuario.
+
+![Esta es una imagen](/ImagenesDemo/Android/Android03.png) ![Esta es una imagen](/ImagenesDemo/Android/Android04.png) 
+
+
 
 ## Flutter (en proceso)
 La aplicación en Flutter muestra en su pantalla principal los animes más populares, los animes en emisión, y las películas de anime más populares como conjuntos de tarjetas. Desde el buscador, puedes hacer una búsqueda de anime por nombre. 
