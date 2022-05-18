@@ -1,5 +1,8 @@
 # Repositorio de Jose Hernández Riquelme para los proyectos de formación de Accenture
-Nuestra formación en Accenture ha consistido en escoger una única idea para una aplicación y una API para trabajar, y desarrollarla en 4 tecnologías diferentes: Angular, Ionic y React en el plano de tecnologías web, y Android y Flutter en el plano de tecnologías móviles, aunque tanto Flutter como Ionic se considerarían tecnologias híbridas para móviles y web-
+
+## En este repositorio subo los proyectos en los que he ido trabajando como parte de mi formación dentro del programa de Prácticas Dixcover de Accenture. 
+
+Mis prácticas han consistido en escoger una única idea para una aplicación y una API con la que trabajar, y desarrollarla en 4 tecnologías diferentes: Angular, Ionic y React en el plano de tecnologías web, y Android y Flutter en el plano de tecnologías móviles, aunque tanto Flutter como Ionic se considerarían tecnologias híbridas para móvil y web.
 
 En mi caso, he decidido desarrollar una aplicación de búsqueda de anime (series de animación japonesas) haciéndo uso de la API [Jikan](https://jikan.moe/), la cual extrae la información de la base de datos de [MyAnimeList](https://myanimelist.net/).
 
