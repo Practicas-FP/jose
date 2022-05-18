@@ -20,6 +20,9 @@ En el fragmento de login, se permite iniciar sesión desde la API de Google. Si 
 
 ![Esta es una imagen](/ImagenesDemo/Android/Android03.png) ![Esta es una imagen](/ImagenesDemo/Android/Android04.png) 
 
+Si el usuario está logeado, se permite el guardo de favoritos en la nube desde firebase. Si no está logeado, los favoritos se guardan en local en una base de datos SQLite a través de Room.
+
+![Esta es una imagen](/ImagenesDemo/Android/Android05.png) 
 
 
 ## Flutter (en proceso)
