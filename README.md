@@ -7,10 +7,25 @@ En mi caso, he decidido desarrollar una aplicación de búsqueda de anime (serie
 La aplicación en Angular muestra en la página principal las tarjetas de los animes más populares. Con un buscador de animes por nombre y filtros por tipo de anime y estado de emisión.
 
 ![Esta es una imagen](/ImagenesDemo/Angular/Angular01.png) 
-![Esta es una imagen](/ImagenesDemo/Angular/Angular01_01.png) 
+![Esta es una imagen](/ImagenesDemo/Angular/Angular01_02.png) 
 
 Si clicamos en una tarjeta, tenemos los detalles del anime, con su sinopsis, capítulos. entre otros.
+
 ![Esta es una imagen](/ImagenesDemo/Angular/Angular02.png) 
+
+Si vamos a la pestaña de acceso de usuario, podemos iniciar sesión desde la API de Google. Si iniciamos sesión correctamente, podemos ver los datos del usuario logeado, y se habilitan en el navbar las pestañas de Área de usuario y Favoritos.
+
+![Esta es una imagen](/ImagenesDemo/Angular/Angular03.png) 
+
+![Esta es una imagen](/ImagenesDemo/Angular/Angular04.png) 
+
+Si volvemos a los detalles de cualquier anime habiendo iniciado sesión, se habilita un botón para guardar o borrar animes favoritos en Firebase.
+
+![Esta es una imagen](/ImagenesDemo/Angular/Angular05.png) 
+
+Los animes guardados en favoritos se pueden ver en la pestaña de favoritos.
+
+![Esta es una imagen](/ImagenesDemo/Angular/Angular06.png) 
 
 
 ## React
