@@ -1,5 +1,5 @@
 # Repositorio de Jose Hernández Riquelme para los proyectos de formación de Accenture
-Nuestra formación en Accenture ha consistido en escoger una única idea para una aplicación y una API para trabajar, y desarrollarla en 4 tecnologías diferentes: Angular y React en el plano de tecnologías web, y Android y Flutter en el plano de tecnologías móviles, siendo esta última híbirida.
+Nuestra formación en Accenture ha consistido en escoger una única idea para una aplicación y una API para trabajar, y desarrollarla en 4 tecnologías diferentes: Angular, Ionic y React en el plano de tecnologías web, y Android y Flutter en el plano de tecnologías móviles, aunque tanto Flutter como Ionic se considerarían tecnologias híbridas para móviles y web-
 
 En mi caso, he decidido desarrollar una aplicación de búsqueda de anime (series de animación japonesas) haciéndo uso de la API [Jikan](https://jikan.moe/), la cual extrae la información de la base de datos de [MyAnimeList](https://myanimelist.net/).
 
@@ -27,6 +27,22 @@ Los animes guardados en favoritos se pueden ver en la pestaña de favoritos.
 
 ![Esta es una imagen](/ImagenesDemo/Angular/Angular06.png) 
 
+# Ionic
+Para la aplicación de Ionic, se traspasado el código typescript de Angular y se han vuelto a rehacer las vistas para adaptarse más a móviles. La pantalla principal con las entradas de anime y el buscador queda así:
+
+![Esta es una imagen](/ImagenesDemo/Ionic/Ionic01.png) 
+
+Tenemos la página de login. Se ha implantado una particularidad de ionic que permite usar la cámara del dispositivo o cargar una imagen de la galería para cambiar la foto de perfil del usuario.
+
+![Esta es una imagen](/ImagenesDemo/Ionic/Ionic03.png) ![Esta es una imagen](/ImagenesDemo/Ionic/Ionic04.png) ![Esta es una imagen](/ImagenesDemo/Ionic/Ionic05.png) ![Esta es una imagen](/ImagenesDemo/Ionic/Ionic06.png) 
+
+Desde la pestaña de favoritos, cargamos las entradas guardadas en Firebase.
+
+![Esta es una imagen](/ImagenesDemo/Ionic/Ionic07.png) 
+
+También se implantó un modo noche desde el menú lateral.
+
+![Esta es una imagen](/ImagenesDemo/Ionic/Ionic08.png) 
 
 # React
 La aplicación en React muestra en su principal pantalla tarjetas con los animes populares. La pestaña cuenta con un buscado de anime por nombre y filtros por estado de emisión y tipo de anime.
