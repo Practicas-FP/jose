@@ -4,6 +4,14 @@ Nuestra formación en Accenture ha consistido en escoger una única idea para un
 En mi caso, he decidido desarrollar una aplicación de búsqueda de anime (series de animación japonesas) haciéndo uso de la API [Jikan](https://jikan.moe/), la cual extrae la información de la base de datos de [MyAnimeList](https://myanimelist.net/).
 
 ## Angular
+La aplicación en Angular muestra en la página principal las tarjetas de los animes más populares. Con un buscador de animes por nombre y filtros por tipo de anime y estado de emisión.
+
+![Esta es una imagen](/ImagenesDemo/Angular/Angular01.png) 
+![Esta es una imagen](/ImagenesDemo/Angular/Angular01_01.png) 
+
+Si clicamos en una tarjeta, tenemos los detalles del anime, con su sinopsis, capítulos. entre otros.
+![Esta es una imagen](/ImagenesDemo/Angular/Angular02.png) 
+
 
 ## React
 La aplicación en React muestra en su principal pantalla tarjetas con los animes populares. La pestaña cuenta con un buscado de anime por nombre y filtros por estado de emisión y tipo de anime.
@@ -12,8 +20,15 @@ La aplicación en React muestra en su principal pantalla tarjetas con los animes
 
 Al hacer click en una entrada, se muestran los detalles: capítulos, fecha de emisión, título original, etc.
 
-![Esta es una imagen](/ImagenesDemo/React/React01.png) 
+![Esta es una imagen](/ImagenesDemo/React/React02.png) 
 
+En la pestaña de acceso, se permite iniciar sesión empleando el sistema de autenticación de firebase. Al iniciar sesión, se muestra la cuenta del usuario, y se habilita en el appbar el área de usuario y la pestaña de favoritos.
+
+![Esta es una imagen](/ImagenesDemo/React/React03.png) 
+
+![Esta es una imagen](/ImagenesDemo/React/React04.png) 
+
+Queda pendiente guardar y cargar favoritos desde Firebase.
 
 ## Android nativo
 La aplicación en Android muestra el fragmento principal con un recycler view de los animes más populares. Hay un cuadro de búsqueda para buscar animes por nombre, y unos radiogroups para filtar por tipo de anime y estado de emision.
