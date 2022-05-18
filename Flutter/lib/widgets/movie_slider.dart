@@ -5,7 +5,7 @@ import '../models/anime_response.dart';
 import '../providers/anime_provider.dart';
 
 class MovieSlider extends StatefulWidget {
-  final List<Data> listadoAnimes;
+  final List<Anime> listadoAnimes;
   final String tituloSlider;
   final Function onNextPage;
 
@@ -68,7 +68,7 @@ class _MovieSliderState extends State<MovieSlider> {
 }
 
 class _MoviePoster extends StatelessWidget {
-  final Data anime;
+  final Anime anime;
   const _MoviePoster({
     Key? key, required this.anime,
   }) : super(key: key);

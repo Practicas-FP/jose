@@ -1,20 +1,24 @@
+import 'package:flutter/material.dart';
+
 class AnimeResponse {
   AnimeResponse({
     required this.pagination,
-    required this.data,
+    required this.listaAnimes,
   });
   late final Pagination pagination;
-  late final List<Data> data;
+  late final List<Anime> listaAnimes;
 
   AnimeResponse.fromJson(Map<String, dynamic> json){
+    if(json['pagination'] != null)
       pagination = Pagination.fromJson(json['pagination']);
-      data = List.from(json['data']).map((e)=>Data.fromJson(e)).toList();
+    if(json['data'] != null)
+      listaAnimes = List.from(json['data']).map((e)=>Anime.fromJson(e)).toList();
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['pagination'] = pagination.toJson();
-    _data['data'] = data.map((e)=>e.toJson()).toList();
+    _data['data'] = listaAnimes.map((e)=>e.toJson()).toList();
     return _data;
   }
 }
@@ -73,8 +77,8 @@ class Items {
   }
 }
 
-class Data {
-  Data({
+class Anime {
+  Anime({
     required this.malId,
     required this.url,
     required this.images,
@@ -143,7 +147,7 @@ class Data {
   late final List<Themes> themes;
   late final List<Demographics> demographics;
 
-  Data.fromJson(Map<String, dynamic> json){
+  Anime.fromJson(Map<String, dynamic> json){
     malId = json['mal_id'];
     url = json['url'];
     images = Images.fromJson(json['images']);

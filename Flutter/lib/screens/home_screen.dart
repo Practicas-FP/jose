@@ -1,4 +1,5 @@
 import 'package:buscador_anime/providers/anime_provider.dart';
+import 'package:buscador_anime/search/search_delegate.dart';
 import 'package:buscador_anime/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +19,9 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
-              onPressed: (){},
+              onPressed: (){
+                showSearch(context: context, delegate: AnimeSearchDelegate());
+              },
               icon: Icon(Icons.search_outlined)
           )
         ],

@@ -6,7 +6,7 @@ import '../models/anime_response.dart';
 import '../providers/anime_provider.dart';
 
 class CardSwipper extends StatelessWidget {
-  final List<Data> listadoAnimes;
+  final List<Anime> listadoAnimes;
 
   CardSwipper({Key? key, required this.listadoAnimes}) : super(key: key);
 

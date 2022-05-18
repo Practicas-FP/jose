@@ -1,10 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 
+import 'package:buscador_anime/helpers/debouncer.dart';
 import 'package:buscador_anime/models/anime_response.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:jikan_api/jikan_api.dart';
-
 import '../models/characters_response.dart';
 
 
@@ -20,11 +20,16 @@ class AnimesProvider extends ChangeNotifier {
   int pagePeliculasAnimePopulares = 0;
   String limit = '3';
 
-  List<Data> listaAnimes = [];
-  List<Data> listaAnimesPopulares = [];
-  List<Data> listaPeliculasAnimePopulares = [];
-  List<Data> listaAnimesEmision = [];
+  List<Anime> listaAnimes = [];
+  List<Anime> listaAnimesPopulares = [];
+  List<Anime> listaPeliculasAnimePopulares = [];
+  List<Anime> listaAnimesEmision = [];
   List<CharacterData> listaPersonajes = [];
+
+  final debouncer = Debouncer(duration: Duration(seconds: 2));
+
+  final StreamController<List<Anime>> _suggestionsStreamController = new StreamController.broadcast();
+  Stream<List<Anime>> get suggestionsStream => this._suggestionsStreamController.stream;
 
   AnimesProvider() {
     print("Inicializado anime provider");
@@ -48,15 +53,9 @@ class AnimesProvider extends ChangeNotifier {
     final response = await http.get(url);
     AnimeResponse respuestaAnime = AnimeResponse.fromJson(json.decode(response.body));
     //
-    listaAnimes = respuestaAnime.data;
+    listaAnimes = respuestaAnime.listaAnimes;
     notifyListeners();
     await Future.delayed(Duration(seconds: 2));
-
-
-    //var jikan = Jikan();
-    //var top = await jikan.getTop(TopType.anime);
-    //top.forEach((p0) {print(p0.title);});
-
   }
 
   getOnPopularDisplayAnimes() async {
@@ -76,7 +75,7 @@ class AnimesProvider extends ChangeNotifier {
     final response = await http.get(url);
     AnimeResponse respuestaAnime = AnimeResponse.fromJson(json.decode(response.body));
     //
-    listaAnimesPopulares = respuestaAnime.data;
+    listaAnimesPopulares = respuestaAnime.listaAnimes;
     notifyListeners();
     print(listaAnimesPopulares);
     await Future.delayed(Duration(seconds: 2));
@@ -104,7 +103,7 @@ class AnimesProvider extends ChangeNotifier {
     final response = await http.get(url);
     AnimeResponse respuestaAnime = AnimeResponse.fromJson(json.decode(response.body));
     //
-    listaPeliculasAnimePopulares.addAll(respuestaAnime.data);
+    listaPeliculasAnimePopulares.addAll(respuestaAnime.listaAnimes);
     notifyListeners();
     await Future.delayed(Duration(seconds: 2));
 
@@ -129,7 +128,7 @@ class AnimesProvider extends ChangeNotifier {
     final response = await http.get(url);
     AnimeResponse respuestaAnime = AnimeResponse.fromJson(json.decode(response.body));
     //
-    listaAnimesEmision.addAll(respuestaAnime.data);
+    listaAnimesEmision.addAll(respuestaAnime.listaAnimes);
     notifyListeners();
     await Future.delayed(Duration(seconds: 2));
 
@@ -148,7 +147,41 @@ class AnimesProvider extends ChangeNotifier {
     listaPersonajes = respuestaPersonajes.data;
     notifyListeners();
     print("Lista personajes cargada");
+  }
+
+  Future<List<Anime>> searchAnimes(String query) async {
+
+    var url = Uri.https(_baseUrl, 'v4/anime', {
+      'limit': "10",
+      'q': query,
+      'status': "",
+      'order_by': "score",
+      'sort': "desc",
+    });
+
+    final response = await http.get(url);
+    print(response.statusCode);
+    if(response.statusCode == 200)
+      {
+        final animeResponse = AnimeResponse.fromJson(json.decode(response.body));
+        return animeResponse.listaAnimes;
+      }
+    return [];
 
 
+  }
+
+  void getSuggestionsByQuery(String searchTerm){
+    debouncer.value = '';
+    debouncer.onValue = (value) async{
+      print('Tenemos valor a buscar: $value');
+      final results = await searchAnimes(value);
+      this._suggestionsStreamController.add(results);
+    };
+    final timer = Timer.periodic(Duration(seconds: 2), (timer) {
+      debouncer.value = searchTerm;
+    });
+
+    Future.delayed(Duration(seconds: 3)).then((_) => timer.cancel());
   }
 }

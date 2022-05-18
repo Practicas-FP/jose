@@ -15,7 +15,7 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Data anime = ModalRoute.of(context)?.settings.arguments as Data;
+    final Anime anime = ModalRoute.of(context)?.settings.arguments as Anime;
 
     return Scaffold(
       // Body: custom scroll view
@@ -41,7 +41,7 @@ class DetailsScreen extends StatelessWidget {
 }
 
 class _CustomAppBar extends StatelessWidget {
-  final Data anime;
+  final Anime anime;
   const _CustomAppBar({Key? key, required this.anime}) : super(key: key);
 
   @override
@@ -74,7 +74,7 @@ class _CustomAppBar extends StatelessWidget {
 
 class _PosterAndTitle extends StatelessWidget {
 
-  final Data anime;
+  final Anime anime;
 
   const _PosterAndTitle( {required this.anime} );
 
@@ -90,15 +90,12 @@ class _PosterAndTitle extends StatelessWidget {
       padding: EdgeInsets.symmetric( horizontal: 20 ),
       child: Row(
         children: [
-          Hero(
-            tag: anime.malId,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: FadeInImage(
-                placeholder: AssetImage('assets/no-image.jpg'),
-                image: NetworkImage( anime.images.jpg.imageUrl ),
-                height: 150,
-              ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: FadeInImage(
+              placeholder: AssetImage('assets/no-image.jpg'),
+              image: NetworkImage( anime.images.jpg.imageUrl ),
+              height: 150,
             ),
           ),
 
@@ -134,7 +131,7 @@ class _PosterAndTitle extends StatelessWidget {
 TextTheme buildTextTheme(BuildContext context) => Theme.of(context).textTheme;
 
 class _Overview extends StatelessWidget {
-  final Data anime;
+  final Anime anime;
   const _Overview({Key? key, required this.anime}) : super(key: key);
 
   @override
