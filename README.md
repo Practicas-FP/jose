@@ -6,11 +6,32 @@ En mi caso, he decidido desarrollar una aplicación de búsqueda de anime (serie
 ## Angular
 
 ## React
+La aplicación en React muestra en su principal pantalla tarjetas con los animes populares. 
+
+
+Se muestran los detalles al hacer click en ella
 
 ## Android nativo
+La aplicación en Android muestra el fragmento principal con un recycler view de los animes más populares. Hay un cuadro de búsqueda para buscar animes por nombre, y unos radiogroups para filtar por tipo de anime y estado de emision.
+
+![Esta es una imagen](/ImagenesDemo/Android/Android01.png) 
+
+Al clicar en una de las tarjetas, se abre una nueva actividad con los detalles del anime, y un botón para añadirlo a favoritos.
+
+![Esta es una imagen](/ImagenesDemo/Android/Android02.png) 
+
+En el fragmento de login, se permite iniciar sesión desde la API de Google. Si se inicia con éxito, se muestran los datos del usuario.
+
+![Esta es una imagen](/ImagenesDemo/Android/Android03.png) ![Esta es una imagen](/ImagenesDemo/Android/Android04.png) 
+
+Si el usuario está logeado, se permite el guardo de favoritos en la nube desde firebase. Si no está logeado, los favoritos se guardan en local en una base de datos SQLite a través de Room.
+
+![Esta es una imagen](/ImagenesDemo/Android/Android05.png) 
+
 
 ## Flutter (en proceso)
-Esta aplicación muestra en su pantalla principal los animes más populares, los animes en emisión, y las películas de anime más populares. Desde el buscador, puedes hacer una búsqueda de anime por nombre.
+La aplicación en Flutter muestra en su pantalla principal los animes más populares, los animes en emisión, y las películas de anime más populares como conjuntos de tarjetas. Desde el buscador, puedes hacer una búsqueda de anime por nombre. 
+Conforme se van deslizando tarjetas, se van recargando otras nuevas como si fuera una paginación, empleando el "infinite scroll".
 
 ![Esta es una imagen](/ImagenesDemo/Flutter/Flutter00.png) 
 
