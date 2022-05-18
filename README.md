@@ -6,12 +6,14 @@ En mi caso, he decidido desarrollar una aplicación de búsqueda de anime (serie
 ## Angular
 
 ## React
-La aplicación en React muestra en su principal pantalla tarjetas con los animes populares. 
+La aplicación en React muestra en su principal pantalla tarjetas con los animes populares. La pestaña cuenta con un buscado de anime por nombre y filtros por estado de emisión y tipo de anime.
 
 ![Esta es una imagen](/ImagenesDemo/React/React01.png) 
 
+Al hacer click en una entrada, se muestran los detalles: capítulos, fecha de emisión, título original, etc.
 
-Se muestran los detalles al hacer click en ella
+![Esta es una imagen](/ImagenesDemo/React/React01.png) 
+
 
 ## Android nativo
 La aplicación en Android muestra el fragmento principal con un recycler view de los animes más populares. Hay un cuadro de búsqueda para buscar animes por nombre, y unos radiogroups para filtar por tipo de anime y estado de emision.
