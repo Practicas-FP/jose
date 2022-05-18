@@ -33,7 +33,7 @@ class AnimeSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
-    return Text("Build results");
+    return buildSuggestions(context);
   }
 
   @override
