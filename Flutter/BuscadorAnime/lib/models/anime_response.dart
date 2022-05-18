@@ -7,8 +7,8 @@ class AnimeResponse {
   late final List<Data> data;
 
   AnimeResponse.fromJson(Map<String, dynamic> json){
-    pagination = Pagination.fromJson(json['pagination']);
-    data = List.from(json['data']).map((e)=>Data.fromJson(e)).toList();
+      pagination = Pagination.fromJson(json['pagination']);
+      data = List.from(json['data']).map((e)=>Data.fromJson(e)).toList();
   }
 
   Map<String, dynamic> toJson() {
@@ -118,7 +118,7 @@ class Data {
   late final List<String> titleSynonyms;
   late final String type;
   late final String source;
-  late final int episodes;
+  int episodes = 0;
   late final String status;
   late final bool airing;
   late final Aired aired;
@@ -149,23 +149,40 @@ class Data {
     images = Images.fromJson(json['images']);
     title = json['title'];
     titleEnglish = null;
-    titleJapanese = json['title_japanese'];
+    if(json['title_japanese'] != null)
+      titleJapanese = json['title_japanese'];
+    else
+      titleJapanese = json['title'];
     titleSynonyms = List.castFrom<dynamic, String>(json['title_synonyms']);
     type = json['type'];
     source = json['source'];
-    episodes = json['episodes'];
+    if(json['episodes'] != null){
+      episodes = json['episodes'];
+    }
     status = json['status'];
     airing = json['airing'];
     aired = Aired.fromJson(json['aired']);
     duration = json['duration'];
     rating = json['rating'];
-    score = json['score'];
-    scoredBy = json['scored_by'];
-    rank = json['rank'];
+    if(json['score'] != null)
+      score =  json['score'];
+    else
+      score = 0;
+    if(json['scored_by'] != null)
+      scoredBy = json['scored_by'];
+    else
+      scoredBy = 0;
+    if(json['rank'] != null)
+      rank = json['rank'];
+    else
+      rank = 0;
     popularity = json['popularity'];
     members = json['members'];
     favorites = json['favorites'];
-    synopsis = json['synopsis'];
+    if(json['synopsis'] != null)
+      synopsis = json['synopsis'];
+    else
+      synopsis = 'No synopsis avaiable';
     background = null;
     season = null;
     year = null;
@@ -304,8 +321,9 @@ class Aired {
   late final String string;
 
   Aired.fromJson(Map<String, dynamic> json){
-    from = json['from'];
-    to = null;
+    if(json['from'] != null)
+      from = json['from'];
+    to = json['to'];
     prop = Prop.fromJson(json['prop']);
     string = json['string'];
   }
@@ -352,9 +370,19 @@ class From {
   late final int year;
 
   From.fromJson(Map<String, dynamic> json){
-    day = json['day'];
-    month = json['month'];
-    year = json['year'];
+    if(json['day'] != null)
+      day = json['day'];
+    else
+      day = 0;
+    if(json['month'] != null)
+      month = json['month'];
+    else
+      month = 0;
+
+    if(json['year'] != null)
+      year = json['year'];
+    else
+      year = 0;
   }
 
   Map<String, dynamic> toJson() {

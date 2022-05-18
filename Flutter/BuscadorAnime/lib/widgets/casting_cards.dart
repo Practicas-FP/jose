@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../models/characters_response.dart';
 
 class CastingCards extends StatelessWidget {
-  CastingCards({Key? key}) : super(key: key);
+  final List<CharacterData> listaPersonajes;
+  CastingCards({Key? key, required this.listaPersonajes}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +13,16 @@ class CastingCards extends StatelessWidget {
       width: double.infinity,
       height: 180,
       child: ListView.builder(
-          itemCount: 10,
+          itemCount: listaPersonajes.length,
           scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) => _CastCard()),
+          itemBuilder: (BuildContext context, int index) => _CastCard(personaje: listaPersonajes[index])),
     );
   }
 }
 
 class _CastCard extends StatelessWidget {
-
-  const _CastCard({Key? key}) : super(key: key);
+  final CharacterData personaje;
+  const _CastCard({Key? key, required this.personaje}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class _CastCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: FadeInImage(
               placeholder: AssetImage('assets/no-image.jpg'),
-              image: NetworkImage('https://via.placeholder.com/150x300'),
+              image: NetworkImage(personaje.character.images.jpg.imageUrl),
               height: 140,
               width: 100,
               fit: BoxFit.cover,
@@ -43,7 +44,7 @@ class _CastCard extends StatelessWidget {
           ),
           SizedBox(height: 5,),
           Text(
-            'character.name',
+            personaje.character.name,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,

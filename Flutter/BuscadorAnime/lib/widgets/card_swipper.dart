@@ -1,7 +1,9 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/anime_response.dart';
+import '../providers/anime_provider.dart';
 
 class CardSwipper extends StatelessWidget {
   final List<Data> listadoAnimes;
@@ -22,6 +24,7 @@ class CardSwipper extends StatelessWidget {
           itemBuilder: (_, int index) {
             return GestureDetector(
               onTap: () {
+                Provider.of<AnimesProvider>(context, listen: false).getOnDisplayCharacters(listadoAnimes[index].malId.toString());
                 Navigator.pushNamed(
                   context,
                   'details',
