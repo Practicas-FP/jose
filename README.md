@@ -1,6 +1,4 @@
-# Repositorio de Jose Hernández Riquelme para los proyectos de formación de Accenture
-
-## En este repositorio subo los proyectos en los que he ido trabajando como parte de mi formación dentro del programa de Prácticas Dixcover de Accenture. 
+# Repositorio de Jose Hernández Riquelme para los proyectos desarrollados como parte de la formación dentro del programa de prácticas Dixcover de Accenture.
 
 Mis prácticas han consistido en escoger una única idea para una aplicación y una API con la que trabajar, y desarrollarla en 4 tecnologías diferentes: Angular, Ionic y React en el plano de tecnologías web, y Android y Flutter en el plano de tecnologías móviles, aunque tanto Flutter como Ionic se considerarían tecnologias híbridas para móvil y web.
 
