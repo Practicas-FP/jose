@@ -4,6 +4,10 @@ Nuestra formación en Accenture ha consistido en escoger una única idea para un
 En mi caso, he decidido desarrollar una aplicación de búsqueda de anime (series de animación japonesas) haciéndo uso de la API [Jikan](https://jikan.moe/), la cual extrae la información de la base de datos de [MyAnimeList](https://myanimelist.net/).
 
 ## Angular
+La aplicación en Angular muestra en la página principal las tarjetas de los animes más populares. Con un buscador de animes por nombre y filtros por tipo de anime y estado de emisión.
+
+![Esta es una imagen](/ImagenesDemo/Angular/Angular01.png) 
+
 
 ## React
 La aplicación en React muestra en su principal pantalla tarjetas con los animes populares. La pestaña cuenta con un buscado de anime por nombre y filtros por estado de emisión y tipo de anime.
