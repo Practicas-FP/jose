@@ -32,6 +32,10 @@ Para la aplicación de Ionic, se traspasado el código typescript de Angular y s
 
 ![Esta es una imagen](/ImagenesDemo/Ionic/Ionic01.png) 
 
+Y la página de detalles quedaría así:
+
+![Esta es una imagen](/ImagenesDemo/Ionic/Ionic02.png) 
+
 Tenemos la página de login. Se ha implantado una particularidad de ionic que permite usar la cámara del dispositivo o cargar una imagen de la galería para cambiar la foto de perfil del usuario.
 
 ![Esta es una imagen](/ImagenesDemo/Ionic/Ionic03.png) ![Esta es una imagen](/ImagenesDemo/Ionic/Ionic04.png) ![Esta es una imagen](/ImagenesDemo/Ionic/Ionic05.png) ![Esta es una imagen](/ImagenesDemo/Ionic/Ionic06.png) 
