@@ -28,13 +28,9 @@ Los animes guardados en favoritos se pueden ver en la pestaña de favoritos.
 ![Esta es una imagen](/ImagenesDemo/Angular/Angular06.png) 
 
 # Ionic
-Para la aplicación de Ionic, se traspasado el código typescript de Angular y se han vuelto a rehacer las vistas para adaptarse más a móviles. La pantalla principal con las entradas de anime y el buscador queda así:
+Para la aplicación de Ionic, se traspasado el código typescript de Angular y se han vuelto a rehacer las vistas para adaptarse más a móviles. La pantalla principal y la de detalles quedaría así:
 
-![Esta es una imagen](/ImagenesDemo/Ionic/Ionic01.png) 
-
-Y la página de detalles quedaría así:
-
-![Esta es una imagen](/ImagenesDemo/Ionic/Ionic02.png) 
+![Esta es una imagen](/ImagenesDemo/Ionic/Ionic01.png) ![Esta es una imagen](/ImagenesDemo/Ionic/Ionic02.png) 
 
 Tenemos la página de login. Se ha implantado una particularidad de ionic que permite usar la cámara del dispositivo o cargar una imagen de la galería para cambiar la foto de perfil del usuario.
 
