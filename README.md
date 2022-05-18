@@ -1,4 +1,4 @@
-# Repositorio para los proyectos desarrollados como parte del programa de prácticas Dixcover de Accenture.
+# Repositorio para los proyectos desarrollados como parte del programa de prácticas Dixcover de Accenture
 
 Mi formación durante este programa de prácticas ha consistido en escoger una única idea para una aplicación junto una API con la que trabajar, y desarrollarla en 4 tecnologías diferentes: Angular juntoa a Ionic y React en el plano de tecnologías web, y Android y Flutter en el plano de tecnologías móviles, aunque tanto Flutter como Ionic se considerarían tecnologias híbridas para móvil y web.
 
