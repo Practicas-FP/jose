@@ -8,6 +8,8 @@ En mi caso, he decidido desarrollar una aplicación de búsqueda de anime (serie
 ## React
 La aplicación en React muestra en su principal pantalla tarjetas con los animes populares. 
 
+![Esta es una imagen](/ImagenesDemo/React/React01.png) 
+
 
 Se muestran los detalles al hacer click en ella
 
