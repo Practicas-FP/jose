@@ -12,6 +12,11 @@ La aplicación en Android muestra el fragmento principal con un recycler view de
 
 ![Esta es una imagen](/ImagenesDemo/Android/Android01.png) 
 
+Al clicar en una de las tarjetas, se abre una nueva actividad con los detalles del anime, y un botón para añadirlo a favoritos.
+
+![Esta es una imagen](/ImagenesDemo/Android/Android02.png) 
+
+
 ## Flutter (en proceso)
 La aplicación en Flutter muestra en su pantalla principal los animes más populares, los animes en emisión, y las películas de anime más populares como conjuntos de tarjetas. Desde el buscador, puedes hacer una búsqueda de anime por nombre. 
 Conforme se van deslizando tarjetas, se van recargando otras nuevas como si fuera una paginación, empleando el "infinite scroll".
