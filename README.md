@@ -7,6 +7,10 @@ En mi caso, he decidido desarrollar una aplicación de búsqueda de anime (serie
 La aplicación en Angular muestra en la página principal las tarjetas de los animes más populares. Con un buscador de animes por nombre y filtros por tipo de anime y estado de emisión.
 
 ![Esta es una imagen](/ImagenesDemo/Angular/Angular01.png) 
+![Esta es una imagen](/ImagenesDemo/Angular/Angular01_01.png) 
+
+Si clicamos en una tarjeta, tenemos los detalles del anime, con su sinopsis, capítulos. entre otros.
+![Esta es una imagen](/ImagenesDemo/Angular/Angular02.png) 
 
 
 ## React
