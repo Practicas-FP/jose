@@ -8,9 +8,13 @@ En mi caso, he decidido desarrollar una aplicación de búsqueda de anime (serie
 ## React
 
 ## Android nativo
+La aplicación en Android muestra el fragmento principal con un recycler view de los animes más populares. Hay un cuadro de búsqueda para buscar animes por nombre, y unos radiogroups para filtar por tipo de anime y estado de emision.
+
+![Esta es una imagen](/ImagenesDemo/Android/Android01.png) 
 
 ## Flutter (en proceso)
-Esta aplicación muestra en su pantalla principal los animes más populares, los animes en emisión, y las películas de anime más populares. Desde el buscador, puedes hacer una búsqueda de anime por nombre.
+La aplicación en Flutter muestra en su pantalla principal los animes más populares, los animes en emisión, y las películas de anime más populares como conjuntos de tarjetas. Desde el buscador, puedes hacer una búsqueda de anime por nombre. 
+Conforme se van deslizando tarjetas, se van recargando otras nuevas como si fuera una paginación, empleando el "infinite scroll".
 
 ![Esta es una imagen](/ImagenesDemo/Flutter/Flutter00.png) 
 
