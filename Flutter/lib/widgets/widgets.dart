@@ -1,4 +1,4 @@
-export 'package:buscador_anime/screens/drawer_anime.dart';
+export 'package:buscador_anime/widgets/drawer_anime.dart';
 
 export 'package:buscador_anime/widgets/casting_cards.dart';
 

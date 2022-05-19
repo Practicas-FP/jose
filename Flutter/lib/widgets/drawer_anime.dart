@@ -1,9 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class DrawerMenu extends StatelessWidget {
+class DrawerMenu extends StatefulWidget {
   const DrawerMenu({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<DrawerMenu> createState() => _DrawerMenuState();
+}
+
+class _DrawerMenuState extends State<DrawerMenu> {
+  User? user = FirebaseAuth.instance.currentUser;
+
+  bool _isSendingVerification = false;
+  bool _isSigningOut = false;
+
+  late User _currentUser;
+
+  @override
+  void initState() {
+    if(user != null)
+      _currentUser = user!;
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -15,28 +36,28 @@ class DrawerMenu extends StatelessWidget {
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
+           DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
-            child: Text('Drawer Header'),
+            child: Text(_currentUser.displayName!),
           ),
           ListTile(
-            title: const Text('Item 1'),
+            title: const Text('Buscador'),
             onTap: () {
               // Update the state of the app
               // ...
               // Then close the drawer
-              Navigator.pop(context);
+              Navigator.pushNamed(context, 'home');
             },
           ),
           ListTile(
-            title: const Text('Item 2'),
+            title: const Text('Área de usuario'),
             onTap: () {
               // Update the state of the app
               // ...
               // Then close the drawer
-              Navigator.pop(context);
+              Navigator.pushNamed(context, 'loginpage');
             },
           ),
         ],

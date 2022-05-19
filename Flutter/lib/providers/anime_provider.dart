@@ -18,7 +18,7 @@ class AnimesProvider extends ChangeNotifier {
   bool hasNextPageAnimesEmision = true;
   int pageAnimes = 0;
   int pagePeliculasAnimePopulares = 0;
-  String limit = '3';
+  String limit = '10';
 
   List<Anime> listaAnimes = [];
   List<Anime> listaAnimesPopulares = [];

@@ -1,14 +1,17 @@
 import 'package:buscador_anime/providers/anime_provider.dart';
-import 'package:buscador_anime/providers/characters_anime_provider.dart';
+import 'package:buscador_anime/screens/login_screen.dart';
+import 'package:buscador_anime/screens/user_area.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vertical_card_pager/vertical_card_pager.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'screens/screens.dart';
 
-void main(){
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(AppState());
 }
 
@@ -34,10 +37,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Buscador Anime',
+      debugShowCheckedModeBanner: false,
       initialRoute: 'home',
       routes: {
         'home': (_) => HomeScreen(),
-        'details': (_) => DetailsScreen()
+        'details': (_) => DetailsScreen(),
+        'loginpage': (_) => LoginPage()
       },
       theme: ThemeData.light().copyWith(
         appBarTheme: AppBarTheme(

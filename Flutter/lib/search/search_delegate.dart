@@ -33,19 +33,14 @@ class AnimeSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
-    return buildSuggestions(context);
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
     if (query.isEmpty) return _emptyContainer();
 
     final animesProvider = Provider.of<AnimesProvider>(context, listen: false);
-    animesProvider.getSuggestionsByQuery(query);
+    animesProvider.searchAnimes(query);
 
-    return StreamBuilder(
-      stream: animesProvider.suggestionsStream,
+    return FutureBuilder(
+      future: animesProvider.searchAnimes(query),
       builder: (context, AsyncSnapshot<List<Anime>> snapshot) {
         if (!snapshot.hasData) {
           return _emptyContainer();
@@ -56,10 +51,18 @@ class AnimeSearchDelegate extends SearchDelegate {
         return ListView.builder(
             itemCount: animes!.length,
             itemBuilder: (context, int index) {
-              return _AnimeItem(anime: animes[index],);
+              return _AnimeItem(
+                anime: animes[index],
+              );
             });
       },
     );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // TODO: implement buildSuggestions
+    return _emptyContainer();
   }
 }
 
@@ -78,14 +81,14 @@ class _AnimeItem extends StatelessWidget {
       ),
       title: Text(anime.title),
       subtitle: Text(anime.titleJapanese),
-      onTap: (){
-        Provider.of<AnimesProvider>(context, listen: false).getOnDisplayCharacters(anime.malId.toString());
+      onTap: () {
+        Provider.of<AnimesProvider>(context, listen: false)
+            .getOnDisplayCharacters(anime.malId.toString());
         Navigator.pushNamed(context, 'details', arguments: anime);
       },
     );
   }
 }
-
 
 class _emptyContainer extends StatelessWidget {
   const _emptyContainer({

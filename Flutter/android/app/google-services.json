@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "837471827346",
+    "firebase_url": "https://poetic-ceremony-345507-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "poetic-ceremony-345507",
+    "storage_bucket": "poetic-ceremony-345507.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837471827346:android:81360425e2fe9407fe7d4b",
+        "android_client_info": {
+          "package_name": "com.example.buscador_anime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837471827346-r8ef8gttisldv1derr9jnqlbr0u42cfb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.buscador_anime",
+            "certificate_hash": "c32b4c8efda8db2989088e6d4789e2366784bf98"
+          }
+        },
+        {
+          "client_id": "837471827346-03585u63qjem493f3fcgsf6lnit3qqdo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8jaPF_w3ysDqEavetUOYcVxVHw3EnqrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837471827346-03585u63qjem493f3fcgsf6lnit3qqdo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837471827346:android:6c96785e40ba6b15fe7d4b",
+        "android_client_info": {
+          "package_name": "com.example.buscadoranime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837471827346-s8kgsl2ocvivhe333bc609ev6q66m8dm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.buscadoranime",
+            "certificate_hash": "c32b4c8efda8db2989088e6d4789e2366784bf98"
+          }
+        },
+        {
+          "client_id": "837471827346-03585u63qjem493f3fcgsf6lnit3qqdo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8jaPF_w3ysDqEavetUOYcVxVHw3EnqrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837471827346-03585u63qjem493f3fcgsf6lnit3qqdo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
