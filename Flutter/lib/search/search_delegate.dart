@@ -98,12 +98,7 @@ class _emptyContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-          child: Icon(
-        Icons.movie_creation_outlined,
-        color: Colors.black38,
-        size: 130,
-      )),
+      child: Center(),
     );
   }
 }
