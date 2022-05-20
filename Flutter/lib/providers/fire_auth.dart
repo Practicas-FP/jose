@@ -58,7 +58,7 @@ class FireAuth {
 
     await user.reload();
     User? refreshedUser = auth.currentUser;
-    
+
 
     return refreshedUser;
   }
