@@ -11,17 +11,9 @@ class DrawerMenu extends StatefulWidget {
 }
 
 class _DrawerMenuState extends State<DrawerMenu> {
-  User? user = FirebaseAuth.instance.currentUser;
-
-  bool _isSendingVerification = false;
-  bool _isSigningOut = false;
-
-  late User _currentUser;
 
   @override
   void initState() {
-    if(user != null)
-      _currentUser = user!;
     super.initState();
   }
 
@@ -40,7 +32,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
-            child: Text(_currentUser.displayName!),
+            child: Text("hola"),
           ),
           ListTile(
             title: const Text('Buscador'),
