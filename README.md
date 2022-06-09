@@ -80,7 +80,7 @@ Si el usuario está logeado, se permite el guardo de favoritos en la nube desde 
 ![Esta es una imagen](/ImagenesDemo/Android/Android05.png) 
 
 
-# Flutter (en proceso)
+# Flutter
 La aplicación en Flutter muestra en su pantalla principal los animes más populares, los animes en emisión, y las películas de anime más populares como conjuntos de tarjetas. Desde el buscador, puedes hacer una búsqueda de anime por nombre. 
 Conforme se van deslizando tarjetas, se van recargando otras nuevas como si fuera una paginación, empleando el "infinite scroll".
 
@@ -90,6 +90,5 @@ Al clicar en una de las tarjetas, se muestran los detalles de ese anime, junto a
 
  ![Esta es una imagen](/ImagenesDemo/Flutter/Flutter02.png) ![Esta es una imagen](/ImagenesDemo/Flutter/Flutter03.png)
 
-Queda pendiente implementar un sistema de login y guardado en favoritos.
-
+También tiene implementado un sistema de login desde FireBase. Queda pendiente por implementar el guardado de favoritos.
 
